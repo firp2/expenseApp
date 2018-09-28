@@ -9,6 +9,5 @@ export class FoodRecognitionPage {
 
   constructor(public navCtrl: NavController) {
   }
-  hello
   
 }
