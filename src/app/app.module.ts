@@ -53,6 +53,9 @@ import { Camera } from '@ionic-native/camera';
 import { getPhotoPipe } from '../pipes/getPhoto';
 import { UserFbProvider } from '../providers/user-firebase';
 import { getNamePipe } from '../pipes/getName';
+import { HttpModule } from '@angular/http';
+import { environment } from '../environment';
+import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service/google-cloud-vision-service';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBgRs35DXJt4tt8kcHMqPEBEwW5loJlghA",
@@ -105,6 +108,7 @@ export function setTranslateLoader(http: HttpClient) {
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     HttpClientModule,
+    HttpModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(firebaseConfig),
@@ -164,7 +168,8 @@ export function setTranslateLoader(http: HttpClient) {
     ExpenseFbProvider,
     UserFbProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-	GoogleAnalytics
+	GoogleAnalytics,
+    GoogleCloudVisionServiceProvider
   ]
 })
 export class AppModule {}
