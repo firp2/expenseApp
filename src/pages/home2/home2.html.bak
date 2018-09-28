@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"  style="color:#000000"></ion-icon>
+    </button>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page11">
+  <form id="home2-form19">
+    <ion-searchbar (ionInput)="getItems($event)"placeholder="请输入食物名称" name="" id="home2-search3"></ion-searchbar>
+  </form>
+  <h3 id="home2-heading12" style="color:#EE8927;font-weight:600;text-align:center;">
+    食物百科
+  </h3>
+  <ion-list id="home2-list29">
+    <ion-item color="none" on-click="goToFoodRecognition()" id="home2-list-item105">
+      食物识别
+      <ion-icon name="qr-scanner" item-right></ion-icon>
+    </ion-item>
+    <ion-item color="none" on-click="goToSearchContrast()" id="home2-list-item106">
+      搜索对比
+      <ion-icon name="contrast" item-right></ion-icon>
+    </ion-item>
+  </ion-list>
+  <div id="home2-container5">
+    <h5 id="home2-heading5" style="color:#000000;font-weight:600;">
+      食物分类
+    </h5>
+  </div>
+  <ion-list id="home2-list16">
+    <ion-item color="none" on-click="goToTheStapleFood()" id="home2-list-item31">
+      <ion-icon name="home" item-left></ion-icon>
+      主食类
+    </ion-item>
+    <ion-item color="none" on-click="goToTheStapleFood()" id="home2-list-item33">
+      <ion-icon name="cafe" item-left></ion-icon>
+      饮品类
+    </ion-item>
+    <ion-item color="none" on-click="goToTheStapleFood()" id="home2-list-item32">
+      <ion-icon name="leaf" item-left></ion-icon>
+      蔬果类
+    </ion-item>
+  </ion-list>
+  <div id="home2-container15">
+    <h5 id="home2-heading11" style="color:#000000;font-weight:600;">
+      减脂-早餐
+    </h5>
+  </div>
+  <div id="home2-container14">
+    <ion-list id="home2-list23">
+      <ion-item color="none" on-click="goToBanana()" id="home2-list-item80">
+        <ion-thumbnail item-left>
+          <img src="assets/img/WRxm6XrcRfOVEvJgo5Jn_B2A53D13E77535ECB053EA1E21A2AC5B.png" />
+        </ion-thumbnail>
+        <h2>
+          香蕉全麦蛋糕
+        </h2>
+      </ion-item>
+      <ion-item color="none" id="home2-list-item81">
+        <ion-thumbnail item-left>
+          <img src="assets/img/Ti32P9KaT6aAgBIV4gJA_2EE75DA7C2FFE58CCB10CF74FD26AADD.png" />
+        </ion-thumbnail>
+        <h2>
+          卷心菜烘蛋
+        </h2>
+      </ion-item>
+      <ion-item color="none" id="home2-list-item82">
+        <ion-thumbnail item-left>
+          <img src="assets/img/bFOmJH46TRSBQSbndr92_91C59D756D2D8B281AE39A73F2992029.png" />
+        </ion-thumbnail>
+        <h2>
+          快速三明治
+        </h2>
+      </ion-item>
+    </ion-list>
+    <div id="home2-container16">
+      <h5 id="home2-heading13" style="color:#000000;font-weight:600;">
+        基础健身动作
+      </h5>
+      <div style="position:relative;overflow:hidden;padding-bottom:56.25%;height:0;" id="home2-video1">
+        <iframe src="https://www.youtube.com/embed/纵向全套压缩运动?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen width="560" height="315" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+      </div>
+      <h5 id="home2-heading14" style="color:#000000;"></h5>
+      <div style="position:relative;overflow:hidden;padding-bottom:56.25%;height:0;" id="home2-video2">
+        <iframe src="https://www.youtube.com/embed/纵向全套压缩运动?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen width="560" height="315" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+      </div>
+    </div>
+  </div>
+  <button id="home2-button24" ion-button clear color="dark" icon-right style="font-size:15px;">
+    百科
+    <ion-icon name="home"></ion-icon>
+  </button>
+  <button id="home2-button25" ion-button clear color="dark" icon-right style="font-size:15px;" on-click="goToTheRecipe()">
+    食谱
+    <ion-icon name="book"></ion-icon>
+  </button>
+  <button id="home2-button26" ion-button clear color="dark" icon-right style="font-size:15px;" on-click="goToCommunity()">
+    逛吃
+    <ion-icon name="chatbubbles"></ion-icon>
+  </button>
+</ion-content>

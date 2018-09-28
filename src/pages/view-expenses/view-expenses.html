@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+     view Expense 
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding id="page5">
+  <ion-list id="viewExpenses-list3">
+    
+    <ion-item-sliding *ngFor = "let expenseItem of expenses"(click)="goToExpenseDetail(expenseItem)">
+      <ion-item color="none" >
+        <h1 > {{expenseItem.merchant}} </h1>
+        <h1> {{expenseItem.foodName}} </h1>
+        <p> {{expenseItem.date | date: 'dd/MM/yyyy HH:mm'}} </p>
+        <p> {{expenseItem.category}} </p>
+
+        <ion-icon item-end color="primary" name="{{expenseItem.favIcon}}" (click)="toggleFav(expenseItem)"></ion-icon>
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="deleteItem(expenseItem)">
+           <ion-icon name="trash"></ion-icon>
+        </button>
+       </ion-item-options>          
+     </ion-item-sliding>        
+
+
+
+  </ion-list>
+</ion-content>

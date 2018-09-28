@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      my picture
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page10">
+  <ion-card id="myPicture-card214">
+    <ion-list>
+      <img src="assets/img/kXMmxZnEQIaLyUzC6RJi_2ab1c8d99e47465d83cfbc37679eb2bd.jpeg" />
+    </ion-list>
+  </ion-card>
+  <ion-card id="myPicture-card215">
+    <ion-list>
+      <img src="assets/img/bE87XNokTKU9SK4PkEGg_8CF95E19A3B9DACE3634E91153994DCC.png" />
+    </ion-list>
+  </ion-card>
+  <ion-card id="myPicture-card216">
+    <ion-list>
+      <img src="assets/img/geQj45dZSkWLpmvnFnBa_3283cf41-a894-4b40-af95-dba6806aecca.jpg" />
+    </ion-list>
+  </ion-card>
+  <ion-card id="myPicture-card217">
+    <ion-list>
+      <img src="assets/img/H3JpOV4XTRekk4VWRwOT_D3DA2063810CA8AE1C0B9F23A6DF845C.png" />
+    </ion-list>
+  </ion-card>
+</ion-content>

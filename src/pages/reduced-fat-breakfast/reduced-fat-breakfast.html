@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Reduced fat breakfast
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page9">
+  <ion-list id="reducedFatBreakfast-list27">
+        <ion-searchbar (ionInput)="getItems($event)" placeholder="请输入食物名称" name="" id="home2-search3" ></ion-searchbar>
+    
+        <ion-item color="none" *ngFor = "let listItem of lists" on-click="goToBanana(listItem)">
+            <ion-thumbnail item-left>
+              <img src="{{listItem.picture}}" />
+            </ion-thumbnail>
+            <h2> {{listItem.name}} </h2>
+           
+        </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+        登录
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding id="page23">
+    <form id="login-form21">
+      <ion-list id="login-list43">
+        <ion-item id="login-input8">
+          <ion-label>
+            邮箱
+          </ion-label>
+          <ion-input type="email" placeholder=""[(ngModel)]="user.email"
+          name="email"></ion-input>
+        </ion-item>
+        <ion-item id="login-input9">
+          <ion-label>
+           密码
+          </ion-label>
+          <ion-input type="password" placeholder=""[(ngModel)]="user.password"
+          name="password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <div ion-text padding-left color="danger">{{loginError}}</div>
+      <div class="spacer" style="height:40px;" id="login-spacer1"></div>
+      <button ion-button color="positive" block (click)="login()" >
+           登录
+        </button>
+
+        <button id="login-button41" ion-button clear color="positive" block href-inappbrowser="/signup" on-click="goToSignup()">
+        创建新的账号
+      </button>
+
+    </form>
+  </ion-content>

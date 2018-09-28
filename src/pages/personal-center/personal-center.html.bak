@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Personal center
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page12">
+  <img src="assets/img/33ifVrc3Rh3ISztN5Abc_11.jpg" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
+  <ion-list id="personalCenter-list34">
+    <ion-item id="personalCenter-input4">
+      <ion-label>
+        昵称：
+      </ion-label>
+      <ion-input type="text" placeholder="Amiy"></ion-input>
+    </ion-item>
+    <ion-item id="personalCenter-select6">
+      <ion-label>
+        性别：
+      </ion-label>
+      <ion-select name="">
+        <ion-option>
+          女
+        </ion-option>
+        <ion-option>
+          男
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item id="personalCenter-input5">
+      <ion-label>
+        邮箱：
+      </ion-label>
+      <ion-input type="email" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item id="personalCenter-input2">
+      <ion-label>
+        出生年月：
+      </ion-label>
+      <ion-input type="date" placeholder="" name="1"></ion-input>
+    </ion-item>
+    <ion-item id="personalCenter-textarea3">
+      <ion-label>
+        兴趣：
+      </ion-label>
+      <ion-textarea placeholder=""></ion-textarea>
+    </ion-item>
+    <ion-item id="personalCenter-textarea4">
+      <ion-label>
+        签名：
+      </ion-label>
+      <ion-textarea placeholder=""></ion-textarea>
+    </ion-item>
+  </ion-list>
+</ion-content>

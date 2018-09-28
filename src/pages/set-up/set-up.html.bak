@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{"setUp"|translate}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page15">
+  <ion-list id="setUp-list42">
+    <ion-item color="none" on-click="goToValidation()" id="setUp-list-item34">
+      {{"mobilePhoneSecurityMonitoring"|translate}}
+      <ion-note item-right></ion-note>
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+    <ion-item color="none" id="setUp-list-item35">
+      {{"shareTheSoftwareWithFriends"|translate}}
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+    <ion-item id="setUp-select7">
+      <ion-label>
+        {{"languageConversion"|translate}}
+      </ion-label>
+      <ion-select name="">
+        <ion-option>
+          中文
+        </ion-option>
+        <ion-option>
+          English
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item color="none" on-click="goToInstructions()" id="setUp-list-item36">
+      {{"softwareDocumentation"|translate}}
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+  </ion-list>
+  <button id="setUp-button38" ion-button color="positive" block>
+    {{"exitLogon"|translate}}
+  </button>
+</ion-content>

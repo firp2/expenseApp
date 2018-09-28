@@ -1,0 +1,55 @@
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { Expense } from '../../models/expense';
+import { NgForm } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
+
+@Component({
+  selector: 'page-submit-expense',
+  templateUrl: 'submit-expense.html'
+})
+export class SubmitExpensePage {
+  categories: string[];
+  expense: Expense;
+  submitted = false;
+  lang = "cn";
+  constructor(public navCtrl: NavController, public translate: TranslateService) {
+    translate.setDefaultLang(this.lang);
+    this.categories = ['breakfast', 'lunch', 'dinner', 'afternoonTea','snacks','nightSnack'];
+    
+
+
+    this.expense = new Expense (new Date().toISOString(),this.categories[0],"", "","",0, '','');
+  }
+get testing() { return JSON.stringify(this.expense); }
+
+changeLang() {
+  if(this.lang =="en"){
+    this.lang = "cn"
+  }
+  else
+  {
+    this.lang='en'
+  }
+  console.log("lang:" + this.lang)
+  this.translate.setDefaultLang(this.lang);
+}
+
+
+onSubmit(form:NgForm) {
+  this.submitted = true;
+
+    if (form.valid && this.expense.amount > 0) {
+
+  alert('Expense submitted:' 
+    + "\n Date: " + this.expense.date
+    + "\n Category: " + this.expense.category 
+    + "\n Food Name: " + this.expense.foodName
+    + "\n Calorie: " + this.expense.calorie
+    + "\n Nutrition: "  + this.expense.nutrition
+    + "\n Amount: " + "$" + this.expense.amount
+    + "\n Notes: " + this.expense.notes );
+}
+
+}
+}

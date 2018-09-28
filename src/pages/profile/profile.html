@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+        Profile
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button solid (click)="goToEditProfile()">
+        {{"edit"|translate}}
+        </button>
+        </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding id="page10">
+    <form id="profile-form4">
+      <ion-item id="profile-input9">
+        <ion-label>
+          {{"email"|translate}}
+        </ion-label>
+        <ion-input type="text"[(ngModel)]="user.email" name="email" disabled></ion-input>
+      </ion-item>
+      <ion-item id="profile-input10">
+        <ion-label>
+          {{"name"|translate}}
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="user.name" name="name" disabled ></ion-input>
+      </ion-item>
+    </form>
+    <img [src]="imgSrc" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
+  </ion-content>

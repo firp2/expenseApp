@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{"community"|translate}}
+    </ion-title>
+    <ion-buttons end >
+      <button ion-button  (click)="goToShare()"><ion-icon name="camera" ></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page4">
+  <ion-card id="community-card23" *ngFor = "let communityItem of community" >
+    <ion-list>
+      <ion-item color="none" id="community-list-item100">
+        <ion-avatar item-left>
+            <input #profilePhoto style="display: none" type="text" value="{{communityItem.icon | getPhoto | async}}"> 
+            <img src="{{profilePhoto.value}}">
+        </ion-avatar>
+        <h2>
+            {{communityItem.username}}
+        </h2>
+      </ion-item>
+      <input #signedImageSrc style="display: none" type="text" value="{{communityItem.picture | getPhoto | async}}"> 
+          <img src="{{signedImageSrc.value}}" (tap)="goToPhotoIntroduce(communityItem)">
+      <ion-item color="none" id="community-list-item101">
+          
+          <!-- {{communityItem.picture | getPhoto }} -->
+          <!-- <img src="{{communityItem.picture | getPhoto| async}}" on-click="goToPhotoIntroduce(communityItem)"/> -->
+          <p></p>
+        {{communityItem.notes}}
+        <ion-icon name="{{icon}}" item-right (click) = "changeColor()" color="{{color}}"></ion-icon>
+      
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  </ion-content>
+     
+  
+  
+  
+  
+  

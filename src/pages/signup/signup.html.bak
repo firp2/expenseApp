@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+        Signup
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding id="page22">
+    <form id="signup-form22">
+      <ion-list id="signup-list44">
+        <ion-item id="signup-input10">
+          <ion-label>
+           姓名
+          </ion-label>
+          <ion-input type="text" placeholder=""[(ngModel)]="user.name"
+          name="name"></ion-input>
+        </ion-item>
+        <ion-item id="signup-input11">
+          <ion-label>
+           邮箱
+          </ion-label>
+          <ion-input type="email" placeholder=""[(ngModel)]="user.email"
+          name="email"></ion-input>
+        </ion-item>
+        <ion-item id="signup-input12">
+          <ion-label>
+            密码
+          </ion-label>
+          <ion-input type="text" placeholder=""[(ngModel)]="user.password" name="password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <div ion-text padding-left color="danger"> {{signupError}} </div>
+      <button ion-button color="positive" block type="submit" (click)="signup()" >
+       注册
+        </button>
+    </form>
+  </ion-content>

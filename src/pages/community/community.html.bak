@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      community
+    </ion-title>
+    <ion-buttons end>
+        <ion-icon name="camera"></ion-icon>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page4">
+  <ion-card id="community-card23" *ngFor = "let communityItem of community" >
+    <ion-list>
+      <ion-item color="none" id="community-list-item100">
+        <ion-avatar item-left>
+          <img src="" />
+        </ion-avatar>
+        <h2>
+          {{communityItem.username}}
+        </h2>
+      </ion-item>
+      <img src="{{communityItem.picture}}" on-click="goToPhotoIntroduce(communityItem)"/>
+      <ion-item color="none" id="community-list-item101">
+        {{communityItem.notes}}
+        <ion-icon name="{{icon}}" item-right (click) = "changeColor()" color="{{color}}"></ion-icon>
+      
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  </ion-content>
+     
+  
+  
+  
+  
+  
+  
+  <!-- <ion-item color="none" id="community-list-item98" >
+        <ion-avatar item-left>
+          <img src="assets/img/feOAFjsIS2chOXnzgMD8_1740235a9e62077e0aexbcUQh.jpg"/>
+        </ion-avatar>
+        <h2>
+          大萌萌81653
+        </h2>
+      </ion-item>
+      <img src="assets/img/aiaUNLNHTMGnpG9aNJsJ_8CF95E19A3B9DACE3634E91153994DCC.png" />
+    </ion-list>
+  </ion-card>
+  <ion-item color="none" id="community-list-item99">
+    自制减肥餐，我真棒！！
+    <ion-icon name="{{icon}}" item-right (click) = "changeColor()" color="{{color}}"></ion-icon>
+  </ion-item>
+
+  <ion-card id="community-card23">
+    <ion-list>
+      <ion-item color="none" id="community-list-item100">
+        <ion-avatar item-left>
+          <img src="assets/img/KO0XZtxS56TarcvB8dmw_10.jpg" />
+        </ion-avatar>
+        <h2>
+          耳总10337
+        </h2>
+      </ion-item>
+      <img src="assets/img/E5ZzDl7nR5O0YgUOFe9Q_348D1023C2B5FD2A0CDE431DE4EF17F2.png" />
+      <ion-item color="none" id="community-list-item101">
+        元气满满的一天，早餐打卡
+        <ion-icon name="heart-outline" item-right></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card id="community-card24">
+    <ion-list>
+      <ion-item color="none" id="community-list-item102">
+        <ion-avatar item-left>
+          <img src="assets/img/Vw2BAe59TDedaWPptXh9_89.jpg" />
+        </ion-avatar>
+        <h2>
+          yiwee_v
+        </h2>
+      </ion-item>
+      <img src="assets/img/6aSomD7TR6yJdnSpgKao_D3DA2063810CA8AE1C0B9F23A6DF845C.png" />
+      <ion-item color="none" id="community-list-item103">
+        健身餐，走起！
+        <ion-icon name="heart-outline" item-right ></ion-icon>
+      </ion-item> -->
+  

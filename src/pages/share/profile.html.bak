@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Profile
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only solid>
+        <ion-icon name="brush"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page10">
+  <form id="profile-form4">
+    <ion-item id="profile-input9">
+      <ion-label>
+        Email
+      </ion-label>
+      <ion-input type="text" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item id="profile-input10">
+      <ion-label>
+        Name
+      </ion-label>
+      <ion-input type="text" placeholder=""></ion-input>
+    </ion-item>
+  </form>
+  <img src="assets/img/T2cKgu8xSZWpTe1Rl2nt_profile-female.jpg" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
+  <button id="profile-button9" ion-button color="positive" block>
+    Save
+  </button>
+</ion-content>

@@ -1,0 +1,60 @@
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { FruitsAndVegetablesPage } from '../fruits-and-vegetables/fruits-and-vegetables';
+import { FoodIntroducedPage } from '../food-introduced/food-introduced';
+import { DrinkPage } from '../drink/drink';
+import { CommunityPage } from '../community/community';
+import { PhotoIntroducePage } from '../photo-introduce/photo-introduce';
+import { TheRecipePage } from '../the-recipe/the-recipe';
+import { ReducedFatBreakfastPage } from '../reduced-fat-breakfast/reduced-fat-breakfast';
+import { BananaPage } from '../banana/banana';
+import { SearchContrastPage } from '../search-contrast/search-contrast';
+import { FoodRecognitionPage } from '../food-recognition/food-recognition';
+import { TheStapleFoodPage } from '../the-staple-food/the-staple-food';
+
+@Component({
+  selector: 'page-home2',
+  templateUrl: 'home2.html'
+})
+export class Home2Page {
+  foods: any;
+  foodService: any;
+
+  constructor(public navCtrl: NavController) {
+  }
+  goToFruitsAndVegetables(params){
+    if (!params) params = {};
+    this.navCtrl.push(FruitsAndVegetablesPage);
+  }goToFoodIntroduced(params){
+    if (!params) params = {};
+    this.navCtrl.push(FoodIntroducedPage);
+  }goToDrink(params){
+    if (!params) params = {};
+    this.navCtrl.push(DrinkPage);
+  }goToCommunity(params){
+    if (!params) params = {};
+    this.navCtrl.push(CommunityPage);
+  }goToPhotoIntroduce(params){
+    if (!params) params = {};
+    this.navCtrl.push(PhotoIntroducePage);
+  }goToTheRecipe(params){
+    if (!params) params = {};
+    this.navCtrl.push(TheRecipePage);
+  }goToReducedFatBreakfast(params){
+    if (!params) params = {};
+    this.navCtrl.push(ReducedFatBreakfastPage);
+  }goToBanana(params){
+    if (!params) params = {};
+    this.navCtrl.push(BananaPage);
+  }goToSearchContrast(params){
+    if (!params) params = {};
+    this.navCtrl.push(SearchContrastPage);
+  }goToFoodRecognition(params){
+    if (!params) params = {};
+    this.navCtrl.push(FoodRecognitionPage);
+  }goToTheStapleFood(params){
+    if (!params) params = {};
+    this.navCtrl.push(TheStapleFoodPage);
+  }
+ 
+}

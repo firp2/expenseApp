@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      submit Expense 
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding id="page4">
+  <form id="submitExpense-form1" #submitExpenseForm="ngForm">
+    <ion-item id="submitExpense-input1">
+      <ion-label>
+          {{"date" | translate }}
+      </ion-label>
+      <ion-datetime displayFormat="DD MMM YYYY"[(ngModel)]="expense.date" name="date"></ion-datetime>
+    </ion-item>
+    <ion-item id="submitExpense-select1">
+      <ion-label>
+      {{"category" | translate }}
+      </ion-label>
+      <ion-select [(ngModel)]="expense.category" name="category">
+
+          <ion-option *ngFor="let cat of categories" [value]="cat"> 
+              {{cat | translate}}
+            </ion-option>
+       
+      </ion-select>
+    </ion-item>
+    <!-- <ion-item id="submitExpense-input3"> 
+      <ion-label>
+      {{"foodName" | translate }}
+      </ion-label>
+      <ion-input type="text" placeholder=""[(ngModel)]="expense.foodName" name="foodName"#foodname="ngModel" required></ion-input>
+    </ion-item>
+    <p ion-text *ngIf="foodname.invalid && submitted == true" color="danger" padding-left>
+      {{"requireFoodName" | translate }}
+  </p> -->
+
+  <p>
+    <ion-searchbar  (ionInput)="getItems($event)" placeholder="search" ></ion-searchbar>
+  <ion-list *ngIf="showList">
+    <ion-item *ngFor="let item of foods" on-click="getFood(item)">
+      {{ item.name }}
+    </ion-item>
+  </ion-list>
+</p>
+
+<ion-item id="submitExpense5">
+    <ion-label>
+    {{"foodName" | translate }}
+    </ion-label>
+  <ion-input type="text" placeholder=""[(ngModel)]="expense.foodName" name="foodName"#foodname="ngModel" required></ion-input>
+  </ion-item>
+<p ion-text *ngIf="foodname.invalid && submitted == true" color="danger" padding-left>
+  {{"requireFoodName" | translate }}
+
+ </p>
+
+  
+   
+ 
+  
+    <ion-item id="submitExpense-input11">
+      <ion-label>
+        {{"calorie" | translate }}
+      </ion-label>
+      <ion-input type="text" placeholder=""[(ngModel)]="expense.calorie" name="calorie"></ion-input>
+    </ion-item>
+    
+    <ion-item id="submitExpense-input2">
+      <ion-label>
+       {{"amount" | translate }}
+      </ion-label>
+      <ion-input type="number" placeholder=""[(ngModel)]="expense.amount" name="amount"></ion-input>
+    </ion-item>
+    <p ion-text *ngIf="expense.amount == 0 && submitted == true" color="danger" padding-left>
+        {{"invalidAmount" | translate }}
+</p>
+
+    <ion-item id="submitExpense-textarea1">
+      <ion-label>
+        {{"notes" | translate }}
+      </ion-label>
+      <ion-textarea placeholder=""[(ngModel)]="expense.notes" name="notes"></ion-textarea>
+    </ion-item>
+  </form>
+  <button id="submitExpense-button1" ion-button color="dark" outline blocktype="submit" (click)="onSubmit(submitExpenseForm)">
+    {{"submit" | translate }}
+  </button>
+ 
+</ion-content>

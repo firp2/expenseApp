@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Food Details
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page20">
+  <ion-list id="foodIntroduced-list24">
+    <ion-item color="none" id="foodIntroduced-list-item75">
+      <ion-avatar item-left>
+        <img src=" {{displayFood.picture}}" />
+      </ion-avatar>
+      <h2>
+        {{displayFood.name}}
+      </h2>
+    </ion-item>
+  </ion-list>
+  <div id="foodIntroduced-markdown18" style="text-align:center;" class="show-list-numbers-and-dots">
+    <p style="margin-top:0px;color:#EE8927;font-size:18px;">
+      <strong>
+        营养分析 
+      </strong>
+    </p>
+  </div>
+  <ion-list id="foodIntroduced-list19">
+    <ion-item color="none" id="foodIntroduced-list-item67">
+      热量
+      <ion-note item-right>{{displayFood.calorie}}千卡/100克</ion-note>
+    </ion-item>
+    <ion-item color="none" id="foodIntroduced-list-item68">
+      蛋白质
+      <ion-note item-right>{{displayFood.protein}}克/100克</ion-note>
+    </ion-item>
+    <ion-item color="none" id="foodIntroduced-list-item69">
+      脂肪
+      <ion-note item-right>{{displayFood.fat}}克/100克</ion-note>
+    </ion-item>
+    <ion-item color="none" id="foodIntroduced-list-item70">
+      碳水化合物
+      <ion-note item-right>{{displayFood.carbohydrates}}克/100克</ion-note>
+    </ion-item>
+  </ion-list>
+  <h4 id="foodIntroduced-heading9" style="color:#000000;font-weight:600;">
+    食物红绿灯
+  </h4>
+  <h5 id="foodIntroduced-heading10" style="color:#20C435;font-weight:400;" *ngIf="displayFood.instructions==1">
+    ●推荐
+  </h5>
+  <h5 id="foodIntroduced-heading10" style="color:orange;font-weight:400;" *ngIf="displayFood.instructions==2">
+    ●适量
+  </h5>
+  <h5 id="foodIntroduced-heading10" style="color:red;font-weight:400;" *ngIf="displayFood.instructions==3">
+    ●警告
+  </h5>
+  <div id="foodIntroduced-markdown22" class="show-list-numbers-and-dots">
+    <p style="color:#000000;">
+      {{displayFood.notes}}
+    </p>
+  </div>
+  <div id="foodIntroduced-container11">
+    <button id="foodIntroduced-button19" ion-button clear color="dark" icon-right style="font-size:15px;border-radius:0px 0px 0px 0px;">
+      收藏
+      <ion-icon name="heart"></ion-icon>
+    </button>
+    <button id="foodIntroduced-button18" ion-button clear color="dark" icon-right style="font-size:15px;">
+      对比
+      <ion-icon name="contrast"></ion-icon>
+    </button>
+    <button id="foodIntroduced-button16" ion-button clear color="dark" icon-right style="font-size:15px;">
+      分享
+      <ion-icon name="share-alt"></ion-icon>
+    </button>
+  </div>
+</ion-content>

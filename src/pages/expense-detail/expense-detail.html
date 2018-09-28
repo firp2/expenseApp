@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Expense Detail
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item color="none" >
+
+      {{"date" | translate }}: {{expense.date| date: 'dd/MM/yyyy HH:mm'}}
+
+    </ion-item>
+
+    <ion-item color="none">
+
+      {{"foodName" | translate }}:  {{expense.foodName}}
+
+    </ion-item>
+
+    <ion-item color="none" >
+
+      {{"category" | translate }}: {{expense.category}}
+
+    </ion-item>
+
+    <ion-item color="none">
+
+      {{"amount" | translate }}:${{expense.amount}}
+
+    </ion-item>
+
+    <ion-item color="none" >
+
+      {{"calorie" | translate }}:{{expense.calorie}}
+
+    </ion-item>
+    
+    <ion-item color="none" >
+
+      {{"note" | translate }}:{{expense.note}}
+
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

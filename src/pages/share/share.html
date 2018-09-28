@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+  <button ion-button menuToggle>
+  <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>
+    share
+  </ion-title>
+  </ion-navbar>
+  </ion-header>
+  <ion-content padding>
+  <form >
+ 
+
+  <ion-label style="text-align:center;font-size:20px;color:#EE8927;font-weight:550;">
+     {{"theDynamicRelease"|translate}}
+  </ion-label>
+  <ion-card>
+  <div id="box"style="height:150px;width:100%">
+       <ion-input type="text" placeholder="Say Something" [(ngModel)]="community.notes" name="notesName"></ion-input>
+  </div>
+</ion-card>
+
+
+  <div id="ion-content" style="text-align:center;">
+    <img [src]="imgSrc" style="display:block;width:100%;height:auto;" />
+    <ion-card-content >
+    <h2 style="font-size:15px;">{{"pleaseAddPhoto"|translate}}</h2>
+    <ion-grid>
+    <ion-row>
+    <ion-col>
+    <button ion-button clear small color="positive" (click)="getFromCamera()">
+      {{"camera"|translate}} 
+    </button>
+    </ion-col>
+    <ion-col>
+    <button ion-button clear small color="positive" (click)="getFromAlbum()">
+      {{"photoAlbum"|translate}}
+    </button>
+    </ion-col>
+    </ion-row>
+    </ion-grid>
+    </ion-card-content>
+  </div>
+    <button ion-button color="primary" block (click)="updateProfile()">
+      {{"save"|translate}}
+    </button>
+    </form>
+    </ion-content>

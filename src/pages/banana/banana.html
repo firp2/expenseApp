@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+       {{"banana" | translate }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page8">
+  <img src="{{displayItem.picture}}" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
+  <h4 id="banana-heading15" style="color:#EE8927;font-weight:600;">
+    {{displayItem.name}}
+  </h4>
+  <div id="banana-markdown25" class="show-list-numbers-and-dots">
+    <p style="color: grey">
+    {{displayItem.notes}}
+    </p>
+  </div>
+  <ion-list id="banana-list25">
+    <ion-item color="none" id="banana-list-item109">
+      <ion-icon name="restaurant" item-left></ion-icon>
+      {{"ingredients"|translate}}
+    </ion-item>
+  </ion-list>
+  <div id="banana-markdown28" style="text-align:center;" class="show-list-numbers-and-dots">
+      <p  *ngFor = "let ingredient of displayItem.ingredients">
+          {{ingredient}}
+      </p>
+     
+  </div>
+  <ion-list id="banana-list26">
+    <ion-item color="none" id="banana-list-item110">
+      <ion-icon name="book" item-left></ion-icon>
+      {{"cookingStep"|translate}}
+    </ion-item>
+  </ion-list>
+  <div id="banana-markdown30" class="show-list-numbers-and-dots">
+      <p  *ngFor = "let step of displayItem.steps">
+          {{step}}
+      </p>
+  </div>
+  <div id="banana-container9">
+    <button id="photoIntroduce-button35" ion-button outline  icon-right  (click) = "changeColor()" color="{{color}}" style="font-size:15px;">
+     {{"collect" | translate }}
+      <ion-icon name="{{icon}}" ></ion-icon>
+    </button>
+    <button id="photoIntroduce-button36" ion-button outline icon-right (click) = "changeColor1()" color="{{color1}}"style="font-size:15px;">
+      {{"share" | translate }}
+      <ion-icon name="{{icon1}}"></ion-icon>
+    </button>
+  </div>
+</ion-content>

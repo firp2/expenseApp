@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{"drink"|translate}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page17">
+  <div id="drink-container8">
+    <form id="drink-form18">
+        <ion-searchbar (ionInput)="getItems($event)" placeholder="请输入食物名称" name="" id="home2-search3"></ion-searchbar>
+        <ion-item color="none" *ngFor = "let foodItem of foods" on-click="goToFoodIntroduced(foodItem)">
+<ion-avatar item-left>
+          <img src="{{foodItem.picture}}" />
+        </ion-avatar>
+        <h2> {{foodItem.name}} </h2>
+        </ion-item>
+    </form>
+  </div>
+</ion-content>

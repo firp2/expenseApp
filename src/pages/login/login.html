@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+     {{"login"|translate}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page23">
+  <form id="login-form21">
+    <ion-list id="login-list43">
+      <ion-item id="login-input8">
+        <ion-label>
+         {{"email"|translate}}
+        </ion-label>
+        <ion-input type="email" placeholder=""[(ngModel)]="user.email"
+        name="email"></ion-input>
+      </ion-item>
+      <ion-item id="login-input9">
+        <ion-label>
+         {{"password"|translate}}
+        </ion-label>
+        <ion-input type="password" placeholder=""[(ngModel)]="user.password"
+        name="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div ion-text padding-left color="danger">{{loginError}}</div>
+    <div class="spacer" style="height:40px;" id="login-spacer1"></div>
+    <button ion-button color="positive" block (click)="login()" >
+         {{"login"|translate}}
+      </button>
+
+      <button id="login-button41" ion-button clear color="positive" block href-inappbrowser="/signup" on-click="goToSignup()">
+     {{"createANewAccount"|translate}}
+    </button>
+
+  </form>
+</ion-content>

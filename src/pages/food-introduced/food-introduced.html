@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+    {{"foodIntroduced"|translate}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page20">
+  <ion-list id="foodIntroduced-list24">
+    <ion-item color="none" id="foodIntroduced-list-item75">
+      <ion-avatar item-left>
+        <img src="{{displayFood.picture}}" />
+      </ion-avatar>
+      <h2>
+        {{displayFood.name}}
+      </h2>
+    </ion-item>
+  </ion-list>
+  <div id="foodIntroduced-markdown18" style="text-align:center;" class="show-list-numbers-and-dots">
+    <p style="margin-top:0px;color:#EE8927;font-size:18px;">
+      <strong>
+        {{"nutritionalAnalysis"|translate}}
+      </strong>
+    </p>
+  </div>
+  <ion-list id="foodIntroduced-list19">
+      <ion-item color="none" id="foodIntroduced-list-item67">
+        {{"heat"|translate}} 
+        <ion-note item-right>{{displayFood.calorie}}{{"kcl"|translate}}/100{{"g"|translate}}</ion-note>
+      </ion-item>
+      <ion-item color="none" id="foodIntroduced-list-item68">
+        {{"protein"|translate}}
+        <ion-note item-right>{{displayFood.protein}}{{"g"|translate}}/100{{"g"|translate}}</ion-note>
+      </ion-item>
+      <ion-item color="none" id="foodIntroduced-list-item69">
+         {{"fat"|translate}}
+        <ion-note item-right>{{displayFood.fat}}{{"g"|translate}}/100{{"g"|translate}}</ion-note>
+      </ion-item>
+      <ion-item color="none" id="foodIntroduced-list-item70">
+        {{"carbohydrate"|translate}}
+        <ion-note item-right>{{displayFood.carbohydrates}}{{"g"|translate}}/100{{"g"|translate}}</ion-note>
+      </ion-item>
+    </ion-list>
+  <h4 id="foodIntroduced-heading9" style="color:#000000;font-weight:600;">
+    {{"warningSign"|translate}}
+  </h4>
+  <h5 id="foodIntroduced-heading10" style="color:#20C435;font-weight:400;" *ngIf="displayFood.instructions==1">
+   {{"recommended"|translate}}
+  </h5>
+  <h5 id="foodIntroduced-heading10" style="color:orange;font-weight:400;" *ngIf="displayFood.instructions==2">
+    {{"moderateAmount"|translate}}
+  </h5>
+  <h5 id="foodIntroduced-heading10" style="color:red;font-weight:400;" *ngIf="displayFood.instructions==3">
+    {{"caveat"|translate}}
+  </h5>
+  <div id="foodIntroduced-markdown22" class="show-list-numbers-and-dots">
+    <p style="color:#000000;">
+      {{displayFood.notes}}
+    </p>
+  </div>
+  <div id="foodIntroduced-container11">
+    <button id="foodIntroduced-button19" ion-button clear color="dark" icon-right style="font-size:15px;border-radius:0px 0px 0px 0px;">
+      {{"collection"|translate}}
+      <ion-icon name="heart"></ion-icon>
+    </button>
+    <button id="foodIntroduced-button18" ion-button clear color="dark" icon-right style="font-size:15px;">
+      {{"compared"|translate}}
+      <ion-icon name="contrast"></ion-icon>
+    </button>
+    <button id="foodIntroduced-button16" ion-button clear color="dark" icon-right style="font-size:15px;">
+      {{"share"|translate}}
+      <ion-icon name="share-alt"></ion-icon>
+    </button>
+  </div>
+</ion-content>

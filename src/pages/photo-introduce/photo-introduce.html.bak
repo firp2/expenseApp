@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      photo introduction
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page7">
+  <ion-list id="photoIntroduce-list33">
+    <ion-item color="none" id="photoIntroduce-list-item113">
+      <ion-avatar item-left>
+        <img src="" />
+      </ion-avatar>
+      <h2>
+       {{displayCommunity.username}}
+      </h2>
+    </ion-item>
+  </ion-list>
+  <img src="{{displayCommunity.picture}}" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
+  <ion-card id="photoIntroduce-card218">
+    <ion-list>
+      <div id="photoIntroduce-markdown31" class="show-list-numbers-and-dots">
+        <p>
+          {{displayCommunity.notes}}
+        </p>
+      </div>
+      <ion-item color="none" id="photoIntroduce-list-item132">
+        <ion-icon name="{{icon}}" item-right (click) = "changeColor()" color="{{color}}"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <button id="photoIntroduce-button37" ion-button outline color="dark" icon-right style="font-size:15px;">
+    食谱
+    <ion-icon name="book"></ion-icon>
+  </button>
+  <button id="photoIntroduce-button35" ion-button outline color="dark" icon-right style="font-size:15px;">
+    收藏
+    <ion-icon name="heart"></ion-icon>
+  </button>
+  <button id="photoIntroduce-button36" ion-button outline color="dark" icon-right style="font-size:15px;">
+    分享
+    <ion-icon name="share-alt"></ion-icon>
+  </button>
+</ion-content>
