@@ -24,6 +24,7 @@ import { ValidationPage } from '../pages/validation/validation';
 import { InstructionsPage } from '../pages/instructions/instructions';
 import { SubmitExpensePage } from '../pages/submit-expense/submit-expense';
 import { SharePage } from '../pages/share/share';
+import {BarcodeScannerPage} from '../pages/barcode-scanner/barcode-scanner';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -101,7 +102,9 @@ export function setTranslateLoader(http: HttpClient) {
     EditProfilePage,
     SharePage,
     getPhotoPipe,
-    getNamePipe
+    getNamePipe,
+    BarcodeScannerPage
+
   ],
   imports: [
     BrowserModule,
@@ -155,7 +158,8 @@ export function setTranslateLoader(http: HttpClient) {
     ProfilePage,
     ExpenseDetailPage,
     EditProfilePage,
-    SharePage
+    SharePage,
+    BarcodeScannerPage
   ],
   providers: [
     StatusBar,

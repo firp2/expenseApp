@@ -33,6 +33,18 @@ foodObservable.subscribe(result => {
     });
     return foodObservable;
 }
+getItemsByName(label: string): Observable<any[]> {
+    let foodObservable: Observable<any[]>;
+    foodObservable = this.db.list('/foodItemsEnglish/', ref =>
+ref.orderByChild('name').equalTo(label)).snapshotChanges().pipe(
+map(changes =>
+changes.map(c => ({ key: c.payload.key, ...c.payload.val()
+}))));
+foodObservable.subscribe(result => {
+    this.foodList = result;
+    });
+    return foodObservable;
+}
 searchItems(val: string): Food[] {
     if (!val || !val.trim()) {
     // if no search term, return all foods.
