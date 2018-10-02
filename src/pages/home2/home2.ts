@@ -9,7 +9,6 @@ import { TheRecipePage } from '../the-recipe/the-recipe';
 import { ReducedFatBreakfastPage } from '../reduced-fat-breakfast/reduced-fat-breakfast';
 import { BananaPage } from '../banana/banana';
 import { SearchContrastPage } from '../search-contrast/search-contrast';
-import { FoodRecognitionPage } from '../food-recognition/food-recognition';
 import { TheStapleFoodPage } from '../the-staple-food/the-staple-food';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import {BarcodeScannerPage} from '../barcode-scanner/barcode-scanner';
@@ -65,9 +64,6 @@ export class Home2Page {
   }goToSearchContrast(params){
     if (!params) params = {};
     this.navCtrl.push(SearchContrastPage);
-  }goToFoodRecognition(params){
-    if (!params) params = {};
-    this.navCtrl.push(FoodRecognitionPage);
   }goToTheStapleFood(params){
     if (!params) params = {};
     this.navCtrl.push(TheStapleFoodPage, {"type": params});

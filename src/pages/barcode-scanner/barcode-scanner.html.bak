@@ -4,7 +4,7 @@
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title>
-        扫码机
+        Barcode Scanner
       </ion-title>
     </ion-navbar>
   </ion-header>

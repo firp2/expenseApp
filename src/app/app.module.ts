@@ -57,6 +57,7 @@ import { getNamePipe } from '../pipes/getName';
 import { HttpModule } from '@angular/http';
 import { environment } from '../environment';
 import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service/google-cloud-vision-service';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBgRs35DXJt4tt8kcHMqPEBEwW5loJlghA",
@@ -171,6 +172,7 @@ export function setTranslateLoader(http: HttpClient) {
     Camera,
     ExpenseFbProvider,
     UserFbProvider,
+    BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
 	GoogleAnalytics,
     GoogleCloudVisionServiceProvider

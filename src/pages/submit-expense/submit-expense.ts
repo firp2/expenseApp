@@ -6,6 +6,7 @@ import { FoodFbProvider } from'../../providers/food-firebase';
 import { ExpenseFbProvider } from'../../providers/expense-firebase';
 import { Food } from '../../models/food';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { FoodRecognitionPage } from '../food-recognition/food-recognition';
 
 @Component({
   selector: 'page-submit-expense',
@@ -88,6 +89,9 @@ onSubmit(form:NgForm) {
 
     this.expenseService.addItem(this.expense); 
 }
-
+}goToFoodRecognition(params){
+  if (!params) params = {};
+  this.navCtrl.push(FoodRecognitionPage);
 }
+
 }
