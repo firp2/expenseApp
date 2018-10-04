@@ -36,7 +36,7 @@ foodObservable.subscribe(result => {
 getItemsByName(label: string): Observable<any[]> {
     let foodObservable: Observable<any[]>;
     foodObservable = this.db.list('/foodItemsEnglish/', ref =>
-ref.orderByChild('name').equalTo(label)).snapshotChanges().pipe(
+ref.orderByChild('sortName').equalTo(label)).snapshotChanges().pipe(
 map(changes =>
 changes.map(c => ({ key: c.payload.key, ...c.payload.val()
 }))));

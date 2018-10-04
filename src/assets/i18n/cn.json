@@ -16,7 +16,7 @@
     "afternoonTea": "下午茶",
     "snacks":"零食",
     "nightSnack":"宵夜",
-    "banana":"香蕉",
+    "Food Recipe":"食谱",
     "collect":"收藏",
     "share":"分享",
     "cart":"大车",
@@ -102,7 +102,7 @@
     "collection":"收藏",
     "theStapleFood":"主食",
     "createANewAccount":"创建新的账号",
-    "billingHistory":"历史账单",
+    "foodHistory":"食物史",
     "edit":"编辑",
     "ingredients":"食材",
     "cookingStep":"烹饪步骤",
@@ -120,5 +120,6 @@
     "theDynamicRelease":"动态发布",
     "pleaseAddPhoto":"请添加照片",
     "uploadcloudServices":"上传云服务",
-    "barcodeScanner":"扫码机"
+    "barcodeScanner":"扫码机",
+    "foodDetails":"食物细节"
     }

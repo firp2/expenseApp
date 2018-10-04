@@ -4,6 +4,8 @@ import { AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { GoogleCloudVisionServiceProvider } from '../../providers/google-cloud-vision-service/google-cloud-vision-service';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import {FoodFbProvider} from "../../providers/food-firebase"
+import {Food} from "../../models/food"
 
 @Component({
   selector: 'page-food-recognition',
@@ -14,18 +16,29 @@ export class FoodRecognitionPage {
   items: AngularFireList<any[]>;
 
   displayItems =[];
-
+  displayFoods=[];
   constructor(
     private camera: Camera,
     private vision: GoogleCloudVisionServiceProvider,
     private db: AngularFireDatabase,
-    private alert: AlertController) 
+    private alert: AlertController,
+    private foodService: FoodFbProvider) 
     {
+      console.log("Enter into food")
       this.items = db.list('foodimagescanner');
   } 
   saveResults(imageData, results) {
-    this.items.push([{ imageData: imageData, results: results}])
-    this.displayItems.push({imageData: imageData, results: results})
+    this.items.push([{ imageData: imageData, results: results}]) //this line is to save to database --> foodimagescanner
+    this.displayItems.push({imageData: imageData, results: results}) // is to display
+    //loop thorugh the results?
+    results[0].labelAnnotations.forEach(foodlabel => {
+      this.foodService.getItemsByName(foodlabel)
+      .subscribe(foods => {
+      this.displayFoods.push(foods);
+      //this.initIcon(); // Init icons after getting foods
+      });
+    });
+   
        return(_ => { })
       // return(err => { this.showAlert(err) });
   }

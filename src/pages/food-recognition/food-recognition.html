@@ -14,14 +14,13 @@
     <ion-card-content>
       <ion-list no-lines>
         <ion-list-header>Labels</ion-list-header>
-        <ion-item *ngFor="let label of item.results[0].labelAnnotations">{{label.description}}</ion-item>
+        <ion-item *ngFor="let food of displayFoods">{{food.name}}</ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
-  <ion-fab top left>
-    <button ion-button icon-start (click)="takePhoto()">
+  <ion-fab bottom right>
+    <button ion-fab (click)="takePhoto()">
       <ion-icon name="camera"></ion-icon>
-      Activate Cloud Vision
   </button>
   </ion-fab>
 </ion-content>

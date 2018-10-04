@@ -16,7 +16,7 @@
 "afternoonTea": "Afternoon Tea",
 "snacks":"Snacks",
 "nightSnack":"Night Snack",
-"banana":"Banana",
+"Food Recipe":"Food Recipe",
 "collect":"Collect",
 "share ":"Share ",
 "cart":"Cart",
@@ -103,7 +103,7 @@
 "collection":"Collection",
 "theStapleFood":"The Staple Food",
 "createANewAccount":"Create A New Account",
-"billingHistory":"Billing History",
+"foodHistory":"Food History",
 "edit":"Edit",
 "ingredients":"Ingredients",
 "cookingStep":"Cooking Step",
@@ -120,6 +120,7 @@
 "g":"g",
 "theDynamicRelease":"The Dynamic Release",
 "pleaseAddPhoto":"Please Add Photo",
-"uploadcloudServices":"Upload cloud Services"
+"uploadcloudServices":"Upload cloud Services",
+"foodDetails":"Food Details"
 
 }

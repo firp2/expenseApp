@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      {{"foodDetails"|translate}} 
+      Expense Detail
     </ion-title>
   </ion-navbar>
 </ion-header>
