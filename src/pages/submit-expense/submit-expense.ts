@@ -11,6 +11,8 @@ import { AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { GoogleCloudVisionServiceProvider } from '../../providers/google-cloud-vision-service/google-cloud-vision-service';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'page-submit-expense',
@@ -22,9 +24,8 @@ export class SubmitExpensePage {
   submitted = false;
   showList=false;
   foods: Food[];
-
+  showCamera: boolean;
   items: AngularFireList<any[]>;
-
   displayItems =[];
   displayFoods=[];
  // selectedFood : Food;
@@ -47,12 +48,20 @@ export class SubmitExpensePage {
     private vision: GoogleCloudVisionServiceProvider,
     private db: AngularFireDatabase,
     private alert: AlertController,//to be continued 
-    private expenseService:ExpenseFbProvider) 
+    private expenseService:ExpenseFbProvider,
+    public translate: TranslateService) 
     {
       console.log("Enter into food")
       this.items = db.list('foodimagescanner');
-    //translate.setDefaultLang(this.lang);
-  // this.lang= translate.getDefaultLang();
+    //var lang = this.translate.getDefaultLang();
+    var lang= translate.getDefaultLang();
+    if(lang == 'cn')
+    {
+      this.showCamera = false;
+    }
+    else if(lang == 'en'){
+      this.showCamera = true;
+    }
     this.categories = ['breakfast', 'lunch', 'dinner', 'afternoonTea','snacks','nightSnack'];
     this.ga.startTrackerWithId('UA-124914826-1')
       .then(() => {
@@ -127,6 +136,8 @@ export class SubmitExpensePage {
 get testing() { return JSON.stringify(this.expense); }
 
 getFood(food: Food) {
+  console.log("Food chosen:")
+  console.log(food)
   this.expense.calorie = food.calorie.toString();
   this.expense.foodName = food.name;
   //this.expense.nutrition = food
@@ -146,8 +157,9 @@ getItems(ev: any) {
   // hide the results when the query is empty
   this.showList = false;
 }
-
 }
+
+
 
 
 onSubmit(form:NgForm) {
