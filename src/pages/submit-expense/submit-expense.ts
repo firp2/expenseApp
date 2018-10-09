@@ -7,6 +7,10 @@ import { ExpenseFbProvider } from'../../providers/expense-firebase';
 import { Food } from '../../models/food';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { FoodRecognitionPage } from '../food-recognition/food-recognition';
+import { AlertController } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { GoogleCloudVisionServiceProvider } from '../../providers/google-cloud-vision-service/google-cloud-vision-service';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Component({
   selector: 'page-submit-expense',
@@ -18,6 +22,11 @@ export class SubmitExpensePage {
   submitted = false;
   showList=false;
   foods: Food[];
+
+  items: AngularFireList<any[]>;
+
+  displayItems =[];
+  displayFoods=[];
  // selectedFood : Food;
   ngOnInit() {
    this.getAll();
@@ -31,7 +40,17 @@ export class SubmitExpensePage {
       });
     }
 
-  constructor(public navCtrl: NavController, public ga: GoogleAnalytics,private foodService:FoodFbProvider, private expenseService:ExpenseFbProvider) {
+  constructor(public navCtrl: NavController, 
+    public ga: GoogleAnalytics,
+    private foodService:FoodFbProvider,
+    private camera: Camera,
+    private vision: GoogleCloudVisionServiceProvider,
+    private db: AngularFireDatabase,
+    private alert: AlertController,//to be continued 
+    private expenseService:ExpenseFbProvider) 
+    {
+      console.log("Enter into food")
+      this.items = db.list('foodimagescanner');
     //translate.setDefaultLang(this.lang);
   // this.lang= translate.getDefaultLang();
     this.categories = ['breakfast', 'lunch', 'dinner', 'afternoonTea','snacks','nightSnack'];
@@ -47,6 +66,64 @@ export class SubmitExpensePage {
 
 
   }
+
+  saveResults(imageData, results) {
+    this.items.push([{ imageData: imageData, results: results}]) //this line is to save to database --> foodimagescanner
+    this.displayItems.push({imageData: imageData, results: results}) // is to display
+    //loop thorugh the results?
+    //console.log("before going into labels")
+    results[0].labelAnnotations.forEach(foodlabel => {
+      console.log("foodlabel object:"+ JSON.stringify(foodlabel))
+      this.foodService.getItemsByName(foodlabel.description)
+      .subscribe(foods => {
+        console.log("foodlabel object:"+ JSON.stringify(foods))
+        if(foods.length>0){
+         this.displayFoods.push(foods[0]); 
+        }
+      
+      //this.initIcon(); // Init icons after getting foods
+      });
+    });
+   
+       return(_ => { })
+      // return(err => { this.showAlert(err) });
+  }
+
+  showAlert(message) {
+    let alert = this.alert.create({
+      title: 'Error',
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+
+  takePhoto() {
+    this.displayItems=[];
+    this.displayFoods=[];
+    const options: CameraOptions = {
+      quality: 100,
+      targetHeight: 500,
+      targetWidth: 500,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.PNG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+    this.camera.getPicture(options).then((imageData) => {
+      this.vision.getLabels(imageData).subscribe((result) => {
+        this.saveResults(imageData, result.json().responses);
+      }, err => {
+        this.showAlert(err);
+      });
+    }, err => {
+      this.showAlert(err);
+    });
+  }
+
+
+
+
 get testing() { return JSON.stringify(this.expense); }
 
 getFood(food: Food) {

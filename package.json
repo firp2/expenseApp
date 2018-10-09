@@ -70,15 +70,12 @@
       "cordova-plugin-camera": {},
       "cordova-sqlite-storage": {},
       "cordova-plugin-ionic-webview": {},
-<<<<<<< HEAD
       "cordova-plugin-x-socialsharing": {},
-      "cordova-plugin-googleplus": {}
-=======
+      "cordova-plugin-googleplus": {},
       "phonegap-plugin-barcodescanner": {
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },
       "cordova-plugin-enable-multidex": {}
->>>>>>> 7732676458fb92486970b331925ce91417fb26fe
     },
     "platforms": [
       "browser",
