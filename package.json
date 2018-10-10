@@ -81,9 +81,7 @@
       "cordova-sqlite-storage": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-x-socialsharing": {},
-      "cordova-plugin-googleplus": {
-        "REVERSED_CLIENT_ID": "538663193611-6f8rqejumaneuqn6m3iq136k397817a0.apps.googleusercontent.com"
-      },
+      "cordova-plugin-googleplus": {},
       "phonegap-plugin-barcodescanner": {
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },

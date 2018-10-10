@@ -3,11 +3,21 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Food } from '../models/food';
-
+import { TranslateService } from '@ngx-translate/core';
 @Injectable()
 export class FoodFbProvider {
     foodList: Food[]; // Stores the expense list for search functionality
-    constructor(private db: AngularFireDatabase) {
+    dataBaseName: string;
+    constructor(private db: AngularFireDatabase,translate: TranslateService,) {
+        if(translate.getDefaultLang()=='en'){
+            //switch to english DB
+            this.dataBaseName = '/foodItemsEnglish/';
+        }
+        else if (translate.getDefaultLang()=='cn')
+        {
+            //switch to chinese DB
+            this.dataBaseName = "/foodItems/";
+        }
     }
     getItems(): Observable<any[]> {
     let foodObservable: Observable<any[]>;
@@ -23,7 +33,7 @@ return foodObservable;
 }
 getItemsByStatus(status: string): Observable<any[]> {
     let foodObservable: Observable<any[]>;
-    foodObservable = this.db.list('/foodItems/', ref =>
+    foodObservable = this.db.list(this.dataBaseName, ref =>
 ref.orderByChild('type').equalTo(status)).snapshotChanges().pipe(
 map(changes =>
 changes.map(c => ({ key: c.payload.key, ...c.payload.val()
