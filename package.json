@@ -89,7 +89,12 @@
       "cordova-plugin-enable-multidex": {},
       "cordova-universal-links-plugin": {},
       "cordova-plugin-buildinfo": {},
-      "cordova-plugin-inappbrowser": {}
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-googleplus": {},
+      "phonegap-plugin-barcodescanner": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      },
+      "cordova-plugin-enable-multidex": {}
     },
     "platforms": [
       "browser",
