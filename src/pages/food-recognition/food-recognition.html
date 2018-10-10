@@ -12,9 +12,9 @@
   <ion-card *ngFor="let item of displayItems">
     <img [src]="'data:image/png;base64,' + item.imageData"/>
     <ion-card-content>
-      <ion-list no-lines>
+      <ion-list>
         <ion-list-header>Labels</ion-list-header>
-        <ion-item *ngFor="let food of displayFoods">{{food.name}}</ion-item>
+        <ion-item *ngFor="let food of displayFoods" (click)="goToFood(food)">{{food.name}} - {{food.calorie}} kCal</ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>

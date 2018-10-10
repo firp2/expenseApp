@@ -35,10 +35,20 @@
       {{"foodName" | translate }}
       </ion-label>
       <ion-input type="text" placeholder=""[(ngModel)]="expense.foodName" name="foodName"#foodname="ngModel" required></ion-input>
-    </ion-item>
+    </ion-item> 
     <p ion-text *ngIf="foodname.invalid && submitted == true" color="danger" padding-left>
       {{"requireFoodName" | translate }}
   </p> -->
+
+  <ion-card *ngFor="let item of displayItems">
+      <img [src]="'data:image/png;base64,' + item.imageData"/>
+      <ion-card-content>
+        <ion-list>
+          <ion-list-header>Choose One:</ion-list-header>
+          <ion-item *ngFor="let food of displayFoods" on-click="getFood(food)">{{food.name}} - {{food.calorie}} kCal</ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
 
   <p>
     <ion-searchbar  (ionInput)="getItems($event)" placeholder="search" ></ion-searchbar>
@@ -50,10 +60,12 @@
 </p>
 
 
-<ion-item color="none" on-click="goToFoodRecognition()" id="home2-list-item105">
+
+
+<!--<ion-item color="none" on-click="goToFoodRecognition()" id="home2-list-item105">
   {{"foodRecognition"|translate}}
   <ion-icon name="camera" item-right></ion-icon>
-</ion-item>
+</ion-item>-->
 
 
 
@@ -95,6 +107,12 @@
       </ion-label>
       <ion-textarea placeholder=""[(ngModel)]="expense.notes" name="notes"></ion-textarea>
     </ion-item>
+
+    <ion-fab bottom right *ngIf="showCamera">
+        <button ion-fab (click)="takePhoto()">
+          <ion-icon name="camera"></ion-icon>
+      </button>
+      </ion-fab>
   </form>
   <button id="submitExpense-button1" ion-button color="dark" outline blocktype="submit" (click)="onSubmit(submitExpenseForm)">
     {{"submit" | translate }}

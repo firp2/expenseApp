@@ -9,7 +9,8 @@ export class Food {
       public fat: number,
       public carbohydrates :number,
       public instructions: string,
-      public notes: string
+      public notes: string,
+      
     ) {  }
   
   }

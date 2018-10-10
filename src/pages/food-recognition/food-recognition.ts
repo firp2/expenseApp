@@ -17,6 +17,7 @@ export class FoodRecognitionPage {
 
   displayItems =[];
   displayFoods=[];
+
   constructor(
     private camera: Camera,
     private vision: GoogleCloudVisionServiceProvider,
@@ -31,10 +32,16 @@ export class FoodRecognitionPage {
     this.items.push([{ imageData: imageData, results: results}]) //this line is to save to database --> foodimagescanner
     this.displayItems.push({imageData: imageData, results: results}) // is to display
     //loop thorugh the results?
+    //console.log("before going into labels")
     results[0].labelAnnotations.forEach(foodlabel => {
-      this.foodService.getItemsByName(foodlabel)
+      console.log("foodlabel object:"+ JSON.stringify(foodlabel))
+      this.foodService.getItemsByName(foodlabel.description)
       .subscribe(foods => {
-      this.displayFoods.push(foods);
+        console.log("foodlabel object:"+ JSON.stringify(foods))
+        if(foods.length>0){
+         this.displayFoods.push(foods[0]); 
+        }
+      
       //this.initIcon(); // Init icons after getting foods
       });
     });
@@ -59,6 +66,8 @@ export class FoodRecognitionPage {
   // }
 
   takePhoto() {
+    this.displayItems=[];
+    this.displayFoods=[];
     const options: CameraOptions = {
       quality: 100,
       targetHeight: 500,
