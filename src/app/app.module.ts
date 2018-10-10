@@ -58,7 +58,22 @@ import { HttpModule } from '@angular/http';
 import { environment } from '../environment';
 import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service/google-cloud-vision-service';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { Facebook } from '@ionic-native/facebook';
+import { AngularFireAuth } from 'angularfire2/auth';
 
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBgRs35DXJt4tt8kcHMqPEBEwW5loJlghA",
+    authDomain: "food-madp.firebaseapp.com",
+    databaseURL: "https://food-madp.firebaseio.com",
+    projectId: "food-madp",
+    storageBucket: "food-madp.appspot.com",
+    messagingSenderId: "538663193611"
+  };
+ 
 const firebaseConfig = {
   apiKey: "AIzaSyBgRs35DXJt4tt8kcHMqPEBEwW5loJlghA",
   authDomain: "food-madp.firebaseapp.com",
@@ -116,6 +131,7 @@ export function setTranslateLoader(http: HttpClient) {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(config),
     AngularFireStorageModule,
     TranslateModule.forRoot({
     loader: {
@@ -174,7 +190,11 @@ export function setTranslateLoader(http: HttpClient) {
     UserFbProvider,
     BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-	GoogleAnalytics,
+  GoogleAnalytics,
+  SocialSharing,
+  GooglePlus,
+  //Facebook,
+  AngularFireAuth,
     GoogleCloudVisionServiceProvider
   ]
 })

@@ -28,6 +28,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { Storage } from '@ionic/storage';
 import { ProfilePage } from '../pages/profile/profile';
 import { AuthService } from '../providers/auth-service';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   templateUrl: 'app.html'
@@ -37,8 +38,27 @@ export class MyApp {
     rootPage:any = LoginPage;
     displayName: string;
     photoURL: string;
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,translate: TranslateService, private storage: Storage, private auth: AuthService, private menu:MenuController) {
-   
+  constructor(platform: Platform, 
+    statusBar: StatusBar, 
+    splashScreen: SplashScreen,
+    translate: TranslateService,
+     private storage: Storage, 
+     private auth: AuthService, public menu:MenuController, public afAuth: AngularFireAuth) {
+    this.rootPage = LoginPage;
+    this.afAuth.authState.subscribe(auth => {
+      if (!auth)
+      {
+        console.log("go to login page")
+        this.rootPage = LoginPage;
+      }
+      else
+      {
+        console.log("go to home page")
+        this.rootPage = Home2Page;
+      }
+        
+    });
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -94,7 +114,7 @@ export class MyApp {
   goToPersonalCenter(params){
     if (!params) params = {};
     this.navCtrl.setRoot(PersonalCenterPage);
-  }goToSetUp(params){
+  }goToSetUp(params){    
     if (!params) params = {};
     this.navCtrl.setRoot(SetUpPage);
   }goToInstructions(params){
@@ -157,6 +177,5 @@ goToViewExpenses(params){
     if (!params) params = {};
     this.navCtrl.push(ProfilePage);
   }
-
   
 }
