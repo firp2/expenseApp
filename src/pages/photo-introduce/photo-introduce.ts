@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController,NavParams  } from 'ionic-angular';
+import { NavController,NavParams,Platform  } from 'ionic-angular';
 import { Community } from '../../models/community';
+import { SocialSharing } from '@ionic-native/social-sharing';
+//import { Facebook } from '@ionic-native/facebook';
 
 @Component({
   selector: 'page-photo-introduce',
@@ -11,7 +13,19 @@ export class PhotoIntroducePage {
   icon = "thumbs-up-outline"
   color = "dark"
   
-  constructor(public navCtrl: NavController, public navParams : NavParams ) {
+  public sendTo   : any;
+  public subject  : string = 'Message from Social Sharing App';
+  public notes  : string = 'Take your app development skills to the next level with Mastering Ionic - the definitive guide';
+  public picture    : string	= 'data:image/jpeg;base64';
+  public uri      : string	= "notes";
+
+
+  constructor(public navCtrl: NavController, 
+    public navParams : NavParams,
+    public platform : Platform, 
+    public socialSharing: SocialSharing,
+    // public facebook: Facebook, 
+    ) {
 
     var username = navParams.get("username");
     var icon = navParams.get("icon");
@@ -35,4 +49,26 @@ export class PhotoIntroducePage {
       this.color = "dark"
     }
   } 
+  shareViaFacebook()
+  {
+    var self = this;
+     this.platform.ready()
+     .then(() =>
+     {
+      
+           self.socialSharing.shareViaFacebook(this.notes, this.picture, this.uri)
+           .then((data) =>
+           {
+              console.log('Shared via Facebook');
+              console.log("shareViaFacebook: Success");
+           })
+           .catch((err) =>
+           {
+              console.log('Was not shared via Facebook'+ err);
+              console.log("shareViaFacebook: failed");
+           });
+
+        })
+      }
+      
 }

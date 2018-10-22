@@ -58,7 +58,19 @@ import { HttpModule } from '@angular/http';
 import { environment } from '../environment';
 import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service/google-cloud-vision-service';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
+import { AngularFireAuth } from 'angularfire2/auth';
+import { HealthDashboardPage } from '../pages/healthDashboard/healthdashboard';
+import { ChartsModule } from 'ng2-charts';
+
+
+//import { NativeStorage } from '@ionic-native/native-storage';
+
+  // Initialize Firebase
+ 
+ 
 const firebaseConfig = {
   apiKey: "AIzaSyBgRs35DXJt4tt8kcHMqPEBEwW5loJlghA",
   authDomain: "food-madp.firebaseapp.com",
@@ -104,7 +116,9 @@ export function setTranslateLoader(http: HttpClient) {
     SharePage,
     getPhotoPipe,
     getNamePipe,
-    BarcodeScannerPage
+    BarcodeScannerPage,
+    HealthDashboardPage,
+    
 
   ],
   imports: [
@@ -113,6 +127,7 @@ export function setTranslateLoader(http: HttpClient) {
     IonicStorageModule.forRoot(),
     HttpClientModule,
     HttpModule,
+    ChartsModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(firebaseConfig),
@@ -160,7 +175,9 @@ export function setTranslateLoader(http: HttpClient) {
     ExpenseDetailPage,
     EditProfilePage,
     SharePage,
-    BarcodeScannerPage
+    BarcodeScannerPage,
+    HealthDashboardPage,
+    
   ],
   providers: [
     StatusBar,
@@ -174,8 +191,13 @@ export function setTranslateLoader(http: HttpClient) {
     UserFbProvider,
     BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-	GoogleAnalytics,
-    GoogleCloudVisionServiceProvider
+  GoogleAnalytics,
+  SocialSharing,
+  GooglePlus,
+  AngularFireAuth,
+  //Facebook,
+    GoogleCloudVisionServiceProvider,
+    //NativeStorage
   ]
 })
 export class AppModule {}
