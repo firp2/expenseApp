@@ -60,19 +60,16 @@ import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-visi
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { Facebook } from '@ionic-native/facebook';
-import { AngularFireAuth } from 'angularfire2/auth';
 
+import { AngularFireAuth } from 'angularfire2/auth';
+import { HealthDashboardPage } from '../pages/healthDashboard/healthdashboard';
+import { ChartsModule } from 'ng2-charts';
+
+
+//import { NativeStorage } from '@ionic-native/native-storage';
 
   // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBgRs35DXJt4tt8kcHMqPEBEwW5loJlghA",
-    authDomain: "food-madp.firebaseapp.com",
-    databaseURL: "https://food-madp.firebaseio.com",
-    projectId: "food-madp",
-    storageBucket: "food-madp.appspot.com",
-    messagingSenderId: "538663193611"
-  };
+ 
  
 const firebaseConfig = {
   apiKey: "AIzaSyBgRs35DXJt4tt8kcHMqPEBEwW5loJlghA",
@@ -119,7 +116,9 @@ export function setTranslateLoader(http: HttpClient) {
     SharePage,
     getPhotoPipe,
     getNamePipe,
-    BarcodeScannerPage
+    BarcodeScannerPage,
+    HealthDashboardPage,
+    
 
   ],
   imports: [
@@ -128,10 +127,10 @@ export function setTranslateLoader(http: HttpClient) {
     IonicStorageModule.forRoot(),
     HttpClientModule,
     HttpModule,
+    ChartsModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireModule.initializeApp(config),
     AngularFireStorageModule,
     TranslateModule.forRoot({
     loader: {
@@ -176,7 +175,9 @@ export function setTranslateLoader(http: HttpClient) {
     ExpenseDetailPage,
     EditProfilePage,
     SharePage,
-    BarcodeScannerPage
+    BarcodeScannerPage,
+    HealthDashboardPage,
+    
   ],
   providers: [
     StatusBar,
@@ -193,9 +194,10 @@ export function setTranslateLoader(http: HttpClient) {
   GoogleAnalytics,
   SocialSharing,
   GooglePlus,
-  //Facebook,
   AngularFireAuth,
-    GoogleCloudVisionServiceProvider
+  //Facebook,
+    GoogleCloudVisionServiceProvider,
+    //NativeStorage
   ]
 })
 export class AppModule {}

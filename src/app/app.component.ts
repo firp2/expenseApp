@@ -29,6 +29,8 @@ import { Storage } from '@ionic/storage';
 import { ProfilePage } from '../pages/profile/profile';
 import { AuthService } from '../providers/auth-service';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { HealthDashboardPage } from '../pages/healthDashboard/healthdashboard';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -43,7 +45,9 @@ export class MyApp {
     splashScreen: SplashScreen,
     translate: TranslateService,
      private storage: Storage, 
-     private auth: AuthService, public menu:MenuController, public afAuth: AngularFireAuth) {
+     private auth: AuthService, public menu:MenuController,
+     public afAuth: AngularFireAuth,
+     ) {
     this.rootPage = LoginPage;
     this.afAuth.authState.subscribe(auth => {
       if (!auth)
@@ -176,6 +180,10 @@ goToViewExpenses(params){
   goToProfile(params){
     if (!params) params = {};
     this.navCtrl.push(ProfilePage);
+  }
+  goToHealthDashboard(params){
+    if (!params) params = {};
+    this.navCtrl.push(HealthDashboardPage);
   }
   
 }

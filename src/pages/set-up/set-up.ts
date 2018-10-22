@@ -8,7 +8,6 @@ import { AuthService } from '../../providers/auth-service';
 import { LoginPage } from '../../pages/login/login';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Facebook } from '@ionic-native/facebook';
 import * as firebase from 'firebase/app';
 
 @Component({
@@ -31,7 +30,7 @@ selectedLang:string
 users: any;
 
   constructor(public navCtrl: NavController, public translate: TranslateService,private storage: Storage, public auth: AuthService,public googlePlus: GooglePlus,
-    public platform: Platform,public afAuth: AngularFireAuth,private facebook: Facebook) {
+    public platform: Platform,public afAuth: AngularFireAuth) {
     this.lang= translate.getDefaultLang();
 
     /*

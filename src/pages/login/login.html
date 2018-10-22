@@ -32,14 +32,14 @@
       <button id="login-button41" ion-button clear color="positive" block href-inappbrowser="/signup" on-click="goToSignup()">
      {{"createANewAccount"|translate}}
     </button>
-    </form>
+    
     <!--Google Sign-in-->
     
         <div class="spacer" style="height:40px;" id="login-spacer1"></div>
-        <p><button ion-button (tap)="loginWithGoogle()" >Login With Google</button></p>
-        
-    <!--Facebook Login
+        <p><button ion-button (tap)="loginGoogle()" >Login With Google</button></p>
+     </form>   
+    <!--Facebook Login-->
     
-    <p><button full ion-button on-click="loginFacebook()">Login with Facebook</button></p>
-  -->
+    <!-- <p><button full ion-button on-click="loginFacebook()">Login with Facebook</button></p> -->
+  
 </ion-content>

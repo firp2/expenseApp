@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController,NavParams,Platform  } from 'ionic-angular';
 import { Community } from '../../models/community';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { Facebook } from '@ionic-native/facebook';
+//import { Facebook } from '@ionic-native/facebook';
 
 @Component({
   selector: 'page-photo-introduce',
@@ -24,7 +24,8 @@ export class PhotoIntroducePage {
     public navParams : NavParams,
     public platform : Platform, 
     public socialSharing: SocialSharing,
-    public facebook: Facebook, ) {
+    // public facebook: Facebook, 
+    ) {
 
     var username = navParams.get("username");
     var icon = navParams.get("icon");
