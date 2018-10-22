@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Food List 
+      Food Diary 
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -109,7 +109,7 @@
     </ion-item>
 
     <ion-fab bottom right *ngIf="showCamera">
-        <button ion-fab (click)="takePhoto()">
+        <button ion-fab *ngIf="showCamera" (click)="takePhoto()">
           <ion-icon name="camera"></ion-icon>
       </button>
       </ion-fab>

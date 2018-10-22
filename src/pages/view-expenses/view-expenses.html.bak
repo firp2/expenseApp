@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-     食物史
+     食物日记
     </ion-title>
   </ion-navbar>
 </ion-header>

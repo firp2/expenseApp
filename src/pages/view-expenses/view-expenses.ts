@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Expense }    from '../../models/expense';
 import { ExpenseFbProvider } from'../../providers/expense-firebase';
 import { ExpenseDetailPage } from '../expense-detail/expense-detail';
+import { SubmitExpensePage } from '../submit-expense/submit-expense';
 
 @Component({
   selector: 'page-view-expenses',
@@ -39,6 +40,11 @@ this.navCtrl.push(ExpenseDetailPage, params);
   
   deleteItem(item:Expense){
     this.expenseService.removeItem(item);
+  }
+
+  goToSubmitExpense(params){
+    if (!params) params = {};
+    this.navCtrl.push(SubmitExpensePage, params);
   }
   
   
