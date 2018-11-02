@@ -86,14 +86,17 @@
   
     <ion-item id="submitExpense-input11">
       <ion-label>
-        {{"calorie" | translate }}
+        {{"calories" | translate }}
       </ion-label>
       <ion-input type="text" placeholder=""[(ngModel)]="expense.calorie" name="calorie"></ion-input>
+      <ion-label>
+        (kCal)
+      </ion-label>
     </ion-item>
     
     <ion-item id="submitExpense-input2">
       <ion-label>
-       {{"amount" | translate }}
+       {{"servings" | translate }}
       </ion-label>
       <ion-input type="number" placeholder=""[(ngModel)]="expense.amount" name="amount"></ion-input>
     </ion-item>
