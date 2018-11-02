@@ -11,7 +11,6 @@ import { BananaPage } from '../banana/banana';
 import { SearchContrastPage } from '../search-contrast/search-contrast';
 import { TheStapleFoodPage } from '../the-staple-food/the-staple-food';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
-import {BarcodeScannerPage} from '../barcode-scanner/barcode-scanner';
 
 @Component({
   selector: 'page-home2',
@@ -67,9 +66,6 @@ export class Home2Page {
   }goToTheStapleFood(params){
     if (!params) params = {};
     this.navCtrl.push(TheStapleFoodPage, {"type": params});
-  }goToBarcodeScanner(params){
-    if (!params) params = {};
-    this.navCtrl.push(BarcodeScannerPage);
   }
  
 }

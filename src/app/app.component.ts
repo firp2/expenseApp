@@ -32,6 +32,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { HealthDashboardPage } from '../pages/healthDashboard/healthdashboard';
 
 
+
 @Component({
   templateUrl: 'app.html'
 })

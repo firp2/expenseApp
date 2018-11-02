@@ -45,7 +45,7 @@
       <ion-card-content>
         <ion-list>
           <ion-list-header>Choose One:</ion-list-header>
-          <ion-item *ngFor="let food of displayFoods" on-click="getFood(food)">{{food.name}} - {{food.calorie}} kCal</ion-item>
+          <ion-item *ngFor="let food of displayFoods" on-click="getFood(food)" >{{food.name}} - {{food.calorie}} kCal</ion-item>
         </ion-list>
       </ion-card-content>
     </ion-card>
@@ -108,11 +108,23 @@
       <ion-textarea placeholder=""[(ngModel)]="expense.notes" name="notes"></ion-textarea>
     </ion-item>
 
-    <ion-fab bottom right *ngIf="showCamera">
+
+    <ion-fab bottom right >
+        
+            <ion-col>
         <button ion-fab *ngIf="showCamera" (click)="takePhoto()">
           <ion-icon name="camera"></ion-icon>
       </button>
-      </ion-fab>
+    </ion-col>
+    <ion-col>
+      
+          <button ion-fab (click)="scan()" >
+            <ion-icon name="barcode"></ion-icon>
+        </button>
+      </ion-col>
+    
+        </ion-fab>
+        
   </form>
   <button id="submitExpense-button1" ion-button color="dark" outline blocktype="submit" (click)="onSubmit(submitExpenseForm)">
     {{"submit" | translate }}

@@ -24,7 +24,6 @@ import { ValidationPage } from '../pages/validation/validation';
 import { InstructionsPage } from '../pages/instructions/instructions';
 import { SubmitExpensePage } from '../pages/submit-expense/submit-expense';
 import { SharePage } from '../pages/share/share';
-import {BarcodeScannerPage} from '../pages/barcode-scanner/barcode-scanner';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -54,7 +53,7 @@ import { Camera } from '@ionic-native/camera';
 import { getPhotoPipe } from '../pipes/getPhoto';
 import { UserFbProvider } from '../providers/user-firebase';
 import { getNamePipe } from '../pipes/getName';
-import { HttpModule } from '@angular/http';
+import { Http ,HttpModule } from '@angular/http';
 import { environment } from '../environment';
 import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service/google-cloud-vision-service';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
@@ -64,6 +63,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HealthDashboardPage } from '../pages/healthDashboard/healthdashboard';
 import { ChartsModule } from 'ng2-charts';
+import { ProductFbProvider } from '../providers/product-firebase';
+
 
 
 //import { NativeStorage } from '@ionic-native/native-storage';
@@ -116,7 +117,6 @@ export function setTranslateLoader(http: HttpClient) {
     SharePage,
     getPhotoPipe,
     getNamePipe,
-    BarcodeScannerPage,
     HealthDashboardPage,
     
 
@@ -175,7 +175,6 @@ export function setTranslateLoader(http: HttpClient) {
     ExpenseDetailPage,
     EditProfilePage,
     SharePage,
-    BarcodeScannerPage,
     HealthDashboardPage,
     
   ],
@@ -189,6 +188,7 @@ export function setTranslateLoader(http: HttpClient) {
     Camera,
     ExpenseFbProvider,
     UserFbProvider,
+    ProductFbProvider,
     BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   GoogleAnalytics,

@@ -16,9 +16,11 @@ export class FoodFbProvider {
         else if (translate.getDefaultLang()=='cn')
         {
             //switch to chinese DB
-            this.dataBaseName = "/foodItems/";
+            this.dataBaseName = "/foodItems/"; 
         }
     }
+
+
     getItems(): Observable<any[]> {
     let foodObservable: Observable<any[]>;
     foodObservable =
@@ -31,6 +33,7 @@ this.foodList = result;
 });
 return foodObservable;
 }
+
 getItemsByStatus(status: string): Observable<any[]> {
     let foodObservable: Observable<any[]>;
     foodObservable = this.db.list(this.dataBaseName, ref =>
@@ -43,6 +46,8 @@ foodObservable.subscribe(result => {
     });
     return foodObservable;
 }
+
+
 getItemsByName(label: string): Observable<any[]> {
     let foodObservable: Observable<any[]>;
     foodObservable = this.db.list('/foodItemsEnglish/', ref =>
@@ -55,6 +60,8 @@ foodObservable.subscribe(result => {
     });
     return foodObservable;
 }
+
+
 searchItems(val: string): Food[] {
     if (!val || !val.trim()) {
     // if no search term, return all foods.

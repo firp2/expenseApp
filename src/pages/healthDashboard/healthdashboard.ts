@@ -24,7 +24,7 @@ public chartHovered(e:any):void {
 }
 
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public ChartsModule : ChartsModule) {
    
     //this.doughnutChartData = new doughnutChartData();
   }
