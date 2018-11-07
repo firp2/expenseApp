@@ -15,7 +15,7 @@ constructor(public navCtrl: NavController, private authService: AuthService, pri
 {
   let displayName = navParams.get('name');
   let email = navParams.get('email');
-  let photoURL = navParams.get('photoURL');
+  let photoURL = navParams.get('photoURL');  
   this.user = new User(email,'',displayName);
   this.user.photoURL = photoURL;
   }

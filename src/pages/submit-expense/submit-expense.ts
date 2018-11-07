@@ -51,7 +51,7 @@ export class SubmitExpensePage {
     private expenseService:ExpenseFbProvider,
     public translate: TranslateService) 
     {
-      console.log("Enter into food")
+      console.log("Enter food")
       this.items = db.list('foodimagescanner');
     //var lang = this.translate.getDefaultLang();
     var lang= translate.getDefaultLang();
@@ -62,7 +62,7 @@ export class SubmitExpensePage {
     else if(lang == 'en'){
       this.showCamera = true;
     }
-    this.categories = ['breakfast', 'lunch', 'dinner', 'afternoonTea','snacks','nightSnack'];
+    this.categories = ['Breakfast', 'Lunch', 'Dinner', 'Afternoon Tea','Snacks','Supper'];
     this.ga.startTrackerWithId('UA-124914826-1')
       .then(() => {
         console.log('Google analytics is ready now');
@@ -71,7 +71,7 @@ export class SubmitExpensePage {
       .catch(e => console.log('Error starting GoogleAnalytics', e));
 
 
-    this.expense = new Expense (new Date().toISOString(),this.categories[0],"", "",0, '','');
+    this.expense = new Expense (new Date().toISOString(),this.categories[""],"", 0,"", '','');
 
 
   }
@@ -166,17 +166,21 @@ onSubmit(form:NgForm) {
   this.submitted = true;
 
     if (form.valid && this.expense.amount > 0) {
-
+      this.expense.dateOnly = this.expense.date.substr(0,10);
+    //  this.expense.date.setHours(0,0,0,0);
   alert('Expense submitted:' 
     + "\n Date: " + this.expense.date
-    + "\n Category: " + this.expense.category 
     + "\n Food Name: " + this.expense.foodName
+    + "\n Category: " + this.expense.category 
+     + "\n Amount: " + this.expense.amount
     + "\n Calorie: " + this.expense.calorie
    // + "\n Nutrition: "  + this.expense.nutrition
-    + "\n Amount: " + "$" + this.expense.amount
+    // + "\n Date: " + this.expense.dateOnly
     + "\n Notes: " + this.expense.notes );
+      console.log("this.expense: "+ this.expense);
 
     this.expenseService.addItem(this.expense); 
+
 }
 }goToFoodRecognition(params){
   if (!params) params = {};

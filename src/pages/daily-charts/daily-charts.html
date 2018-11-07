@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+        Daily Charts
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding id="page1">
+  
+    <ion-content>
+      <div style="display: block">
+        <canvas baseChart
+                    [data]="doughnutChartData"
+                    [labels]="doughnutChartLabels"
+                    [chartType]="doughnutChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </ion-content>
+  
+  <ion-list id="page-list1">
+    <ion-item color="none" id="page-list-item2" >
+     Carbohydrates  : 
+     <p>
+        {{doughnutChartData[0]}}
+     </p>
+    </ion-item>
+  </ion-list>
+  <ion-list id="page-list2">
+    <ion-item color="none" id="page-list-item3">
+      Fat   :
+      <p>
+        {{doughnutChartData[1]}}
+      </p>
+    </ion-item>
+  </ion-list>
+  <ion-list id="page-list3">
+    <ion-item color="none" id="page-list-item4">
+      Protein   :
+      <p>
+          {{doughnutChartData[2]}}
+       </p> 
+    </ion-item>
+  </ion-list>
+  <button id="page-button1" ion-button color="positive">
+    All
+  </button>
+  <button id="page-button2" ion-button color="positive">
+    Daily
+  </button>
+  <button id="page-button5" ion-button color="positive">
+    Weekly
+  </button>
+  <button id="page-button6" ion-button color="positive">
+    Today
+  </button>
+</ion-content>

@@ -25,7 +25,13 @@
         <ion-label>
           {{"name"|translate}}
         </ion-label>
-        <ion-input type="text" [(ngModel)]="user.name" name="name" disabled ></ion-input>
+        <ion-input type="text" [(ngModel)]="user.displayName" name="name" disabled ></ion-input>
+      </ion-item>
+      <ion-item id="profile-input11">
+        <ion-label>
+          {{"height"|translate}}
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="user.height" name="height" disabled ></ion-input>
       </ion-item>
     </form>
     <img [src]="imgSrc" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />

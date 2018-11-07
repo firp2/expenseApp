@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, MenuController, Platform } from 'ionic-angular';
+import { Component,Injectable } from '@angular/core';
+import { NavController, MenuController, Platform} from 'ionic-angular';
 import { Home2Page } from '../home2/home2';
 import { User } from '../../models/user';
 import { SignupPage } from '../signup/signup';
@@ -11,8 +11,11 @@ import * as firebase from 'firebase/app';
 // import { Facebook } from '@ionic-native/facebook';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import 'firebase/auth';
+import { UserFbProvider } from '../../providers/user-firebase';
 // import { NativeStorage } from '@ionic-native/native-storage';
+import { AuthProvider } from '../../providers/auth';
 
+@Injectable()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -31,6 +34,7 @@ export class LoginPage {
   fireauth = firebase.auth();
   userProfile: any = null;
   name: string = null;
+  
 
   isLoggedIn: boolean = false;
 
@@ -42,6 +46,7 @@ export class LoginPage {
     public platform: Platform,
     public socialSharing: SocialSharing,
     // public facebook: Facebook,
+    public authProvider: AuthProvider
   ) {
     this.user = new User('', '', '');
     firebase.auth().onAuthStateChanged(user => {
@@ -54,43 +59,54 @@ export class LoginPage {
     });
 
   }
-  // Google SignIn
-  loginGoogle() {
+  
+  // // Google SignIn
+  // loginGoogle() {
+  //   this.googlePlus.login({})
+  //     .then(res => {
+  //       console.log(res);
+  //       this.displayName = res.displayName;
+  //       this.email = res.email;
+  //       this.familyName = res.familyName;
+  //       this.givenName = res.givenName;
+  //       this.userId = res.userId;
+  //       this.imageUrl = res.imageUrl;
 
-    this.googlePlus.login({})
-      .then(res => {
-        console.log(res);
-        this.displayName = res.displayName;
-        this.email = res.email;
-        this.familyName = res.familyName;
-        this.givenName = res.givenName;
-        this.userId = res.userId;
-        this.imageUrl = res.imageUrl;
+  //       this.isLoggedIn = true;
+  //     })
+  //     .catch(err => console.error(err));
 
-        this.isLoggedIn = true;
-      })
-      .catch(err => console.error(err));
+  //   console.log('Sign in with google');
 
-    console.log('Sign in with google');
+  // }
 
-  }
-
+// googleLogin(){
+//   this.auth.googlePlus.login({})
+//   .then(res => console.log(res))
+//   .catch(err => console.error(err));
+// }
   // loginWithGoogle() {
   //   this.auth.signInWithGoogle();
   //     }
-
-
+ 
+    
   //-------//
-  goToSignup(params) {
+  goToSignup(params){
     if (!params) params = {};
     this.navCtrl.push(SignupPage);
   }
+  
   ionViewDidEnter() {
     this.menu.swipeEnable(false);
 
     // If you have more than one side menu, use the id like below
     // this.menu.swipeEnable(false, 'menu1');
   }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LoginPage');
+  }
+
 
   login() {
     console.log("username: " + this.user.email);
@@ -102,76 +118,16 @@ export class LoginPage {
         error => this.loginError = error.message
       );
   }
-
-  //Facebook Login
-  // loginFacebook() {
-  // if (this.platform.is('cordova')) {
-  //   console.log("cordova before facebook login")
-  //   return this.facebook.login(['email', 'public_profile']).then(res => {
-  //     const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
-  //    return firebase.auth().signInWithCredential(facebookCredential);
-  //   })
-  // }
-  // else {
-  //  console.log("not cordova")
-  //  return this.afAuth.auth
-  //     .signInWithPopup(new firebase.auth.FacebookAuthProvider())
-  //     .then(res => console.log(res));
-  // }
-  //  }
+ 
 
 
+ //Google Login
+  googleLogin(): void {
+    this.authProvider.googleLogin();
+  }
 
-
-
-  // async webGoogleLogin(): Promise<void> {
-  //   try {
-  //     const provider = new firebase.auth.GoogleAuthProvider();
-  //     const credential = await this.afAuth.auth
-  //       .signInWithPopup(provider)
-  //       .then(data => {
-  //         this.navCtrl.setRoot(Home2Page);
-  //       });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }   }
-
-  //   async nativeGoogleLogin(): Promise<void> {
-
-  //     this.googlePlus.login({
-  //       'webClientId' : '538663193611-38krnm1tkngcjmurcs0r6ghtrgde5124.apps.googleusercontent.com'
-  //     })
-
-  //       .then(res => {
-  //         const firecreds = firebase.auth.GoogleAuthProvider.credential(res.idToken);
-  //         this.fireauth.signInWithCredential(firecreds).then((res))
-
-
-  //       })
-  //       .catch(err => console.error(err));
-
-
-  //     }
-
-  /*
-  return await this.afAuth.auth
-          .signInWithCredential(
-            firebase.auth.GoogleAuthProvider.credential(googlePlusUser.idToken)
-          )
-          .then(data => {
-            this.nav.setRoot(HomePage);
-          });
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  
-  
-  */
-
-
-
-
-
-
+moveToHome(res){
+  console.log('res',res);
+  this.navCtrl.setRoot(Home2Page,{res:res});
+}
 }

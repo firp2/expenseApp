@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, MenuController  } from 'ionic-angular';
+import { Component, ViewChild, Pipe, PipeTransform } from '@angular/core';
+import { Platform, Nav, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -30,24 +30,26 @@ import { ProfilePage } from '../pages/profile/profile';
 import { AuthService } from '../providers/auth-service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HealthDashboardPage } from '../pages/healthDashboard/healthdashboard';
+// import { OrderPipe } from 'ngx-order-pipe';
+import { DailyChartsPage } from '../pages/daily-charts/daily-charts';
+
 
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+ 
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
     rootPage:any = LoginPage;
     displayName: string;
     photoURL: string;
-  constructor(platform: Platform, 
-    statusBar: StatusBar, 
-    splashScreen: SplashScreen,
-    translate: TranslateService,
-     private storage: Storage, 
-     private auth: AuthService, public menu:MenuController,
-     public afAuth: AngularFireAuth,
-     ) {
+  googlePlus: any;
+
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
+    translate: TranslateService, private storage: Storage, private auth: AuthService, 
+    public menu:MenuController, public afAuth: AngularFireAuth,) 
+    {
     this.rootPage = LoginPage;
     this.afAuth.authState.subscribe(auth => {
       if (!auth)
@@ -62,6 +64,8 @@ export class MyApp {
       }
         
     });
+
+    
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -169,7 +173,7 @@ export class MyApp {
   }goToLogin(params){
     if (!params) params = {};
     this.navCtrl.push(LoginPage);
-  } goToSignup(params){
+  }goToSignup(params){
     if (!params) params = {};
     this.navCtrl.push(SignupPage);
   }
@@ -185,5 +189,41 @@ goToViewExpenses(params){
     if (!params) params = {};
     this.navCtrl.push(HealthDashboardPage);
   }
+  goToDailyCharts(params){
+    if (!params) params = {};
+    this.navCtrl.push(DailyChartsPage);
+  }
   
+
+
+
+}
+
+@Pipe({
+  name: 'groupBy',
+})
+export class GroupByPipe implements PipeTransform {
+  transform(value: any, groupByKey: string) {
+    console.log(value);
+    const events: any[] = [];
+    const groupedElements: any = {};
+
+    value.forEach((obj: any) => {
+      if (!(obj[groupByKey] in groupedElements)) {
+        groupedElements[obj[groupByKey]] = [];
+      }
+      groupedElements[obj[groupByKey]].push(obj);
+    });
+
+    for (let prop in groupedElements) {
+      if (groupedElements.hasOwnProperty(prop)) {
+        events.push({
+          key: prop,
+          list: groupedElements[prop]
+        });
+      }
+    }
+
+    return events;
+  }
 }

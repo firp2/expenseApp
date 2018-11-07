@@ -11,7 +11,7 @@ export class ExpenseDetailPage {
   expense: Expense;
 
   constructor(public navCtrl: NavController, private navParams: NavParams) {
-     let date = navParams.get('date');
+    let date = navParams.get('date');
 
      let foodName = navParams.get('foodName');
 
@@ -20,15 +20,13 @@ export class ExpenseDetailPage {
      let amount = navParams.get('amount');
 
      let calorie = navParams.get('calorie');
+    
+     let dateOnly = navParams.get('dateOnly');
       
-     let note = navParams.get('note');
+     let notes = navParams.get('notes');
 
    
-
-    
-
-
-    this.expense = new Expense (date,category , foodName,calorie, amount,note);
+    this.expense = new Expense (date,foodName, category,calorie, amount,dateOnly,notes);
   }
   
 }

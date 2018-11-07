@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler,IonicPageModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CartPage } from '../pages/cart/cart';
@@ -64,13 +64,16 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HealthDashboardPage } from '../pages/healthDashboard/healthdashboard';
 import { ChartsModule } from 'ng2-charts';
-
-
+import { OrderPipe, OrderModule } from 'ngx-order-pipe';
+import { GroupByPipe } from './app.component';
 //import { NativeStorage } from '@ionic-native/native-storage';
+import { UserFb } from '../models/userFB';
+import { DailyChartsPage } from '../pages/daily-charts/daily-charts';
+import { AuthProvider } from '../providers/auth';
+
+
 
   // Initialize Firebase
- 
- 
 const firebaseConfig = {
   apiKey: "AIzaSyBgRs35DXJt4tt8kcHMqPEBEwW5loJlghA",
   authDomain: "food-madp.firebaseapp.com",
@@ -118,8 +121,9 @@ export function setTranslateLoader(http: HttpClient) {
     getNamePipe,
     BarcodeScannerPage,
     HealthDashboardPage,
+    DailyChartsPage,
+    GroupByPipe,
     
-
   ],
   imports: [
     BrowserModule,
@@ -128,10 +132,12 @@ export function setTranslateLoader(http: HttpClient) {
     HttpClientModule,
     HttpModule,
     ChartsModule,
+    OrderModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireStorageModule,
+    IonicPageModule.forChild(LoginPage),
     TranslateModule.forRoot({
     loader: {
     provide: TranslateLoader,
@@ -177,7 +183,7 @@ export function setTranslateLoader(http: HttpClient) {
     SharePage,
     BarcodeScannerPage,
     HealthDashboardPage,
-    
+    DailyChartsPage
   ],
   providers: [
     StatusBar,
@@ -198,6 +204,8 @@ export function setTranslateLoader(http: HttpClient) {
   //Facebook,
     GoogleCloudVisionServiceProvider,
     //NativeStorage
+    OrderPipe,
+    AuthProvider
   ]
 })
 export class AppModule {}

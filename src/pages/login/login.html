@@ -33,13 +33,15 @@
      {{"createANewAccount"|translate}}
     </button>
     
+
+
     <!--Google Sign-in-->
+    <button ion-button block color="danger" (click)="googleLogin()">
+        <ion-icon name="logo-googleplus"></ion-icon>
+        Login with Google
+    </button>
     
-        <div class="spacer" style="height:40px;" id="login-spacer1"></div>
-        <p><button ion-button (tap)="loginGoogle()" >Login With Google</button></p>
-     </form>   
     <!--Facebook Login-->
-    
     <!-- <p><button full ion-button on-click="loginFacebook()">Login with Facebook</button></p> -->
-  
+  </form>  
 </ion-content>

@@ -3,6 +3,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Expense } from '../models/Expense';
+import firebase from 'firebase';
 
 @Injectable()
 export class ExpenseFbProvider {
@@ -39,6 +40,32 @@ searchItems(val: string): Expense[] {
     return this.listList.filter(item =>
     item.foodName.toLowerCase().includes(val));
 }
+
+/*Testing
+orderByDate(){
+return this.db.list('/expenseItems/', ref =>
+ref.orderByChild("date").on("child_added", function(snapshot) {
+    console.log(snapshot.key());
+});
+}
+*/
+
+//Dates
+getDates(): Observable<any[]> {
+    let listObservable: Observable<any[]>;
+    listObservable =
+this.db.list('/expenseItems/').snapshotChanges().pipe(
+map(changes =>
+changes.map(c => ({ key: c.payload.key, ...c.payload.val()
+}))));
+listObservable.subscribe(result => {
+this.listList = result;
+});
+return listObservable;
+}
+
+
+
 addItem(item) {
 this.db.list('/expenseItems/').push(item);
 }
@@ -48,4 +75,21 @@ this.db.list('/expenseItems/').remove(item.key);
 updateItem(item) {
 this.db.list('/expenseItems/').update(item.key, item);
 }
+
+// getDateOrder(day) {
+//     return firebase.database()
+//       .ref("expenseItems")
+//       .orderByChild("date")
+//       .once("value")
+//       .then((snapshot) => {
+//         let dateorder = [];
+//         snapshot.forEach((child) => {
+//           let val = child.val();
+//           if (val.vacationStart <= day) {
+//             dateorder.push(val);
+//           }
+//         });
+//         return dateorder;
+//       });
+//   }
 }

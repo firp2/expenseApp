@@ -12,11 +12,11 @@
 
   <ion-list>
 
-    <ion-item color="none" >
+    <!-- <ion-item color="none" >
 
-      {{"date" | translate }}: {{expense.date| date: 'dd/MM/yyyy HH:mm'}}
+      {{"date" | translate }}: {{expense.date| date: 'dd/MM/yyyy'}}
 
-    </ion-item>
+    </ion-item> -->
 
     <ion-item color="none">
 
@@ -41,10 +41,16 @@
       {{"calorie" | translate }}:{{expense.calorie}}
 
     </ion-item>
+
+    <ion-item color="none" >
+
+      {{"date" | translate }}: {{expense.date}}
+
+    </ion-item>
     
     <ion-item color="none" >
 
-      {{"note" | translate }}:{{expense.note}}
+      {{"note" | translate }}:{{expense.notes}}
 
     </ion-item>
 

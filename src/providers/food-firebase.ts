@@ -19,6 +19,8 @@ export class FoodFbProvider {
             this.dataBaseName = "/foodItems/";
         }
     }
+
+
     getItems(): Observable<any[]> {
     let foodObservable: Observable<any[]>;
     foodObservable =
@@ -43,6 +45,8 @@ foodObservable.subscribe(result => {
     });
     return foodObservable;
 }
+
+// 
 getItemsByName(label: string): Observable<any[]> {
     let foodObservable: Observable<any[]>;
     foodObservable = this.db.list('/foodItemsEnglish/', ref =>
@@ -55,11 +59,14 @@ foodObservable.subscribe(result => {
     });
     return foodObservable;
 }
+
+// Search Function
 searchItems(val: string): Food[] {
     if (!val || !val.trim()) {
     // if no search term, return all foods.
     return this.foodList;
     }
+    
     val = val.toLowerCase();
     // Filter locally instead of invoking multiple calls to server
     // esp when user types character by charcter in search bar

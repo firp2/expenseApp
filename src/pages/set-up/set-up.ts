@@ -72,6 +72,7 @@ console.log("lang:" + this.lang)
     console.log(error);
   });
   }
+ 
 /*
   Fblogout() {
     this.facebook.logout()

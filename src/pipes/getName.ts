@@ -9,7 +9,7 @@ import { UserFb } from '../models/userFB';
     name : 'getName',
 })
 export class getNamePipe implements PipeTransform{
-    userFound = new UserFb("","","");
+    userFound = new UserFb("","","",0,"",0,0,"");
     
     constructor(private userService: UserFbProvider){
 

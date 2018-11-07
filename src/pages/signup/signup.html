@@ -15,15 +15,13 @@
           <ion-label>
           {{"name"|translate}}
           </ion-label>
-          <ion-input type="text" placeholder=""[(ngModel)]="user.name"
-          name="name"></ion-input>
+          <ion-input type="text" placeholder="" [(ngModel)]="userFB.name" name="name"></ion-input>
         </ion-item>
         <ion-item id="signup-input11">
           <ion-label>
            {{"email"|translate}}
           </ion-label>
-          <ion-input type="email" placeholder=""[(ngModel)]="user.email"
-          name="email"></ion-input>
+          <ion-input type="email" placeholder=""[(ngModel)]="userFB.email" name="email"></ion-input>
         </ion-item>
         <ion-item id="signup-input12">
           <ion-label>
@@ -31,7 +29,55 @@
           </ion-label>
           <ion-input type="text" placeholder=""[(ngModel)]="user.password" name="password"></ion-input>
         </ion-item>
+        <ion-item id="signup-input13">
+            <ion-label>
+           {{"Height"|translate}}
+          </ion-label>
+          <ion-input type="number" placeholder=""[(ngModel)]="userFB.height"
+          name="height"></ion-input>
+        </ion-item>
+        <ion-item id="signup-input14">
+          <ion-label>
+           {{"Weight"|translate}} 
+          </ion-label>
+          <ion-input type="number" placeholder=""[(ngModel)]="userFB.weight"
+          name="weight"></ion-input>
+        </ion-item>
+      
+        <ion-item id="signup-input15">
+          <ion-label>
+           {{"Age"|translate}}
+          </ion-label>
+          <ion-input type="number" placeholder=""[(ngModel)]="userFB.age"
+          name="age"></ion-input>
+        </ion-item>
+        <ion-item id="signup-input16">
+          <ion-label>
+           {{"Gender"|translate}}
+          </ion-label>
+           <ion-select type="string" placeholder="" [(ngModel)]="userFB.gender"  name="gender">
+    <ion-option value="f">Female</ion-option>
+    <ion-option value="m">Male</ion-option> 
+    </ion-select>   
+                  </ion-item>
+        <!-- <ion-item id="signup-input17">
+          <ion-label>
+           {{"BMI"|translate}}
+          </ion-label>
+        </ion-item> -->
+
+        <ion-input type="text" placeholder=""[(ngModel)]="user.calculateBMI" name="BMI">
+           <button (tap)="calculateBMI()">BMI: {{bmiValue}}</button></ion-input>
+          <p><strong>You are {{bmiMessage}}</strong></p> 
+       
+
       </ion-list>
+ <div padding>
+</div> 
+          
+        
+
+
       <div ion-text padding-left color="danger"> {{signupError}} </div>
       <button ion-button color="positive" block type="submit" (click)="signup()" >
       {{"signUp"|translate}}

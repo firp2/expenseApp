@@ -3,11 +3,10 @@ import { NavController } from 'ionic-angular';
 import { ChartsModule } from 'ng2-charts';
 
 @Component({
-  selector: 'healthdashboard-page',
-  templateUrl: 'healthdashboard.html'
+  selector: 'page-daily-charts',
+  templateUrl: 'daily-charts.html'
 })
-export class HealthDashboardPage {
-
+export class DailyChartsPage {
 
 // Doughnut
 public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
@@ -29,5 +28,4 @@ public chartHovered(e:any):void {
     //this.doughnutChartData = new doughnutChartData();
   }
   
-
 }
