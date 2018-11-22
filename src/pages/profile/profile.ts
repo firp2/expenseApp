@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 import { EditProfilePage } from '../edit-profile/edit-profile';
 import { User } from '../../models/user';
 import { AuthService } from '../../providers/auth-service';
+import { UserFb } from '../../models/userFB';
+import { UserFbProvider } from '../../providers/user-firebase';
 
 @Component({
   selector: 'page-profile',
@@ -11,16 +13,30 @@ import { AuthService } from '../../providers/auth-service';
 export class ProfilePage implements OnInit {
 
     private user: User;
+    userFb: UserFb;
     private imgSrc;
-    constructor(public navCtrl: NavController, private authService: AuthService) {
+    bmiValue: number;
+    constructor(public navCtrl: NavController, private authService: AuthService, private userFbService: UserFbProvider) {
     this.user = new User('', '', '');
+    this.userFb = new UserFb ('','','',0,'',0,0,'',0);
     }
+    
     ngOnInit() {
     this.authService.getCurrentUserObserver().subscribe(user => {
     if (user) {
+      console.log("user details: ");
       console.log(user);
+         //We need to go to userFB to get more info
+   this.userFbService.getItemsByStatus(user.email).subscribe(
+    (user) => {
+      this.userFb = <UserFb>user[0];
+      this.userFb.bmi = this.bmiValue;
+      console.log("this.userFb:");
+      console.log(JSON.stringify(this.userFb));
+    });
     this.user = new User(user.email, '', user.displayName);
     this.user.photoURL = user.photoURL;
+    
     if (this.user.photoURL && this.user.photoURL.length > 0) {
     this.authService.getDownloadUrl(this.user.photoURL).then(
     (url) => {
@@ -31,6 +47,9 @@ export class ProfilePage implements OnInit {
     this.imgSrc = "assets/img/profileDefault.png";
     console.log("default=" +this.imgSrc)
     }
+
+ 
+
     }, (err) => {
       this.imgSrc = "assets/img/profileDefault.png";
     console.log("default=" +this.imgSrc)

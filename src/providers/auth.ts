@@ -38,4 +38,5 @@ export class AuthProvider {
       })
       .catch(err => console.error('Error: ', err));
   }
+  
 }

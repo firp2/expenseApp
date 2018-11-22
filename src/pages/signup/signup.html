@@ -27,7 +27,7 @@
           <ion-label>
             {{"password"|translate}}
           </ion-label>
-          <ion-input type="text" placeholder=""[(ngModel)]="user.password" name="password"></ion-input>
+          <ion-input type="password" placeholder=""[(ngModel)]="user.password" name="password"></ion-input>
         </ion-item>
         <ion-item id="signup-input13">
             <ion-label>
@@ -65,12 +65,10 @@
            {{"BMI"|translate}}
           </ion-label>
         </ion-item> -->
-
-        <ion-input type="text" placeholder=""[(ngModel)]="user.calculateBMI" name="BMI">
-           <button (tap)="calculateBMI()">BMI: {{bmiValue}}</button></ion-input>
-          <p><strong>You are {{bmiMessage}}</strong></p> 
-       
-
+  <button ion-button (click)="calculateBMI()">Calculate BMI
+        
+         </button>
+         {{bmiValue}} 
       </ion-list>
  <div padding>
 </div> 

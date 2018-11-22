@@ -1,11 +1,11 @@
 export class Expense {
-
-    constructor(
+  
+  constructor(
       public date: string,
       public foodName: string,
       public category: string,
       public amount: number,
-      public calorie: string,
+      public calorie: number, //string!!,
      // public nutrition: string,
       public dateOnly: string,
       public notes?: string

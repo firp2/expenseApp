@@ -76,20 +76,12 @@ updateItem(item) {
 this.db.list('/expenseItems/').update(item.key, item);
 }
 
-// getDateOrder(day) {
-//     return firebase.database()
-//       .ref("expenseItems")
-//       .orderByChild("date")
-//       .once("value")
-//       .then((snapshot) => {
-//         let dateorder = [];
-//         snapshot.forEach((child) => {
-//           let val = child.val();
-//           if (val.vacationStart <= day) {
-//             dateorder.push(val);
-//           }
-//         });
-//         return dateorder;
-//       });
-//   }
+
+//Chart
+getData(dataset:string){
+    return this.db.list(dataset)
+  }
+  updateRanking(key, newData) {
+    return this.db.object(`rankings/${key}`).update(newData)
+  }
 }

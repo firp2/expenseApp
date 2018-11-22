@@ -1,3 +1,4 @@
+<!-- Food Details Page -->
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
@@ -32,25 +33,25 @@
 
     <ion-item color="none">
 
-      {{"amount" | translate }}:${{expense.amount}}
+      {{"servings" | translate }}:{{expense.amount}}
 
     </ion-item>
 
     <ion-item color="none" >
 
-      {{"calorie" | translate }}:{{expense.calorie}}
+      {{"calories" | translate }}:{{expense.calorie}}
 
     </ion-item>
 
     <ion-item color="none" >
 
-      {{"date" | translate }}: {{expense.date}}
+      {{"date" | translate }}: {{expense.date  | date: 'dd/MM/yyyy'}}
 
     </ion-item>
     
     <ion-item color="none" >
 
-      {{"note" | translate }}:{{expense.notes}}
+      {{"notes" | translate }}:{{expense.notes}}
 
     </ion-item>
 

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ChartsModule } from 'ng2-charts';
+import { RecommendedCal } from '../../models/recommendedCal';
+import { MyApp } from '../../app/app.component';
 
 @Component({
   selector: 'healthdashboard-page',
@@ -8,16 +10,13 @@ import { ChartsModule } from 'ng2-charts';
 })
 export class HealthDashboardPage {
 
-
+  recommendedCal : RecommendedCal;
 // Doughnut
-public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
-public doughnutChartData:number[] = [350, 450, 100];
+public doughnutChartLabels:string[] = ['Breakfast', 'Lunch', 'Dinner', 'Afternoon Tea','Snacks','Supper'];
+public doughnutChartData:number[] = [350, 450, 100,60,50,190];
 public doughnutChartType:string = 'doughnut';
 
 // events
-public chartClicked(e:any):void {
-  console.log(e);
-}
 
 public chartHovered(e:any):void {
   console.log(e);
@@ -27,6 +26,8 @@ public chartHovered(e:any):void {
   constructor(public navCtrl: NavController, public ChartsModule : ChartsModule) {
    
     //this.doughnutChartData = new doughnutChartData();
+    this.recommendedCal = MyApp.rCal;
+      console.log("Recommended cal:" + this.recommendedCal.calories);
   }
   
 

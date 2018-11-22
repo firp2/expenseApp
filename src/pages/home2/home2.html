@@ -10,12 +10,17 @@
 </ion-header>
 <ion-content padding id="page11">
   <form id="home2-form19">
-    <ion-searchbar (ionInput)="getItems($event)"placeholder="请输入食物名称" name="" id="home2-search3"></ion-searchbar>
+    <ion-searchbar (ionInput)="getItems($event)"placeholder="Please Enter Food Name" name="" id="home2-search3"></ion-searchbar>
   </form>
   <h3 id="home2-heading12" style="color:#EE8927;font-weight:600;text-align:center;">
     {{"foodEncyclopedia"|translate}}
   </h3>
   <ion-list id="home2-list29">
+
+      <ion-item color="none" on-click="goToEatWhere()" id="home2-list-item109">
+          {{"eatWhere"|translate}}
+          <ion-icon name="map" item-right></ion-icon>
+        </ion-item>
    
     <ion-item color="none" on-click="goToSearchContrast()" id="home2-list-item106">
       {{"searchComparison"|translate}}

@@ -22,6 +22,18 @@
   </ion-label>
   <ion-input type="text" placeholder="You are not logged in" [(ngModel)]="user.name" name="name"></ion-input>
   </ion-item>
+  <ion-item >
+  <ion-label>
+     {{"height"|translate}}
+  </ion-label>
+  <ion-input type="text" placeholder="" [(ngModel)]="user.height" name="height"></ion-input>
+  </ion-item>
+  <ion-item >
+  <ion-label>
+     {{"weight"|translate}}
+  </ion-label>
+  <ion-input type="text" placeholder="" [(ngModel)]="user.weight" name="weight"></ion-input>
+  </ion-item>
   <ion-card>
     <img [src]="imgSrc" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
     <ion-card-content>

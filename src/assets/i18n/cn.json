@@ -121,5 +121,7 @@
     "pleaseAddPhoto":"请添加照片",
     "uploadcloudServices":"上传云服务",
     "barcodeScanner":"扫码机",
-    "foodDetails":"食物细节"
+    "foodDetails":"食物细节",
+    "HealthDashboard": "健康仪表板",
+    "eatWhere": "哪里吃?"
     }

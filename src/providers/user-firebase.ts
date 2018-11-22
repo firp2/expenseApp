@@ -21,6 +21,7 @@ this.listList = result;
 });
 return listObservable;
 }
+
 getItemsByStatus(status: string):Observable<any[]> {
 var a = this.db.list('/users/', ref =>
 ref.orderByChild('email').equalTo(status)).snapshotChanges().pipe(
@@ -28,6 +29,7 @@ map(changes =>
 changes.map(c => ({ key: c.payload.key, ...c.payload.val()
 }))
 ));
+
 // console.log("getByStatus");
 // console.log(a)
 
@@ -40,7 +42,7 @@ return a;
 }
 
 getItemsByEmail(status: string) {
-    this.db.database.ref('/users/').orderByChild('email').equalTo(status).once('value', (snapshot) => {
+   return this.db.database.ref('/users/').orderByChild('email').equalTo(status).once('value', (snapshot) => {
         console.log("found in FB:")
         console.log(snapshot.val())
         return snapshot.val();

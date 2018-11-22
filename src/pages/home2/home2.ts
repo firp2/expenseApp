@@ -11,6 +11,8 @@ import { BananaPage } from '../banana/banana';
 import { SearchContrastPage } from '../search-contrast/search-contrast';
 import { TheStapleFoodPage } from '../the-staple-food/the-staple-food';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { EatWherePage } from '../eat-where/eat-where';
+
 
 @Component({
   selector: 'page-home2',
@@ -67,5 +69,10 @@ export class Home2Page {
     if (!params) params = {};
     this.navCtrl.push(TheStapleFoodPage, {"type": params});
   }
+  goToEatWhere(params){
+    if (!params) params = {};
+    this.navCtrl.push(EatWherePage);
+  }
+
  
 }

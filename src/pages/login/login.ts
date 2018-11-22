@@ -14,6 +14,7 @@ import 'firebase/auth';
 import { UserFbProvider } from '../../providers/user-firebase';
 // import { NativeStorage } from '@ionic-native/native-storage';
 import { AuthProvider } from '../../providers/auth';
+import { UserFb } from '../../models/userFB';
 
 @Injectable()
 @Component({
@@ -23,6 +24,7 @@ import { AuthProvider } from '../../providers/auth';
 })
 export class LoginPage {
   user: User;
+  userFb:UserFb;
   loginError: string;
   displayName: any;
   email: any;
@@ -122,12 +124,15 @@ export class LoginPage {
 
 
  //Google Login
+
   googleLogin(): void {
-    this.authProvider.googleLogin();
+    this.authProvider.googleLogin(); 
   }
 
 moveToHome(res){
   console.log('res',res);
   this.navCtrl.setRoot(Home2Page,{res:res});
 }
+
+
 }

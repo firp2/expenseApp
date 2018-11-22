@@ -3,8 +3,9 @@ import { NavController,NavParams,Platform  } from 'ionic-angular';
 import { Community } from '../../models/community';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { AuthProvider } from '../../providers/auth';
+import { AuthService } from '../../providers/auth-service';
 //import { Facebook } from '@ionic-native/facebook';
-import { File } from '@ionic-native/file';
 
 
 @Component({
@@ -19,23 +20,23 @@ export class PhotoIntroducePage {
   // public sendTo   : any;
   // public subject  : string = 'Message from Social Sharing App';
   // public notes  : string = 'Take your app development skills to the next level with Mastering Ionic - the definitive guide';
-   public picture    : string	= 'data:image/jpeg;base64';
+   //public picture    : string	= 'data:image/jpeg;base64';
   // public uri      : string	= "notes";
-
+  picture:string;
 
   constructor(public navCtrl: NavController, 
     public navParams : NavParams,
     public platform : Platform, 
     public sharingVar: SocialSharing,
     // public facebook: Facebook, 
-    
+    public authService: AuthService
     ) {
 
     var username = navParams.get("username");
     var icon = navParams.get("icon");
-    var picture = navParams.get("picture");
+    this.picture = navParams.get("picture");
     var notes = navParams.get("notes");
-    this.displayCommunity = new Community (icon,username, picture,notes);
+    this.displayCommunity = new Community (icon,username, this.picture,notes);
     console.log("Community"); 
     console.log(this.displayCommunity)
   }
@@ -74,15 +75,24 @@ export class PhotoIntroducePage {
 
   //       })
   //     }
-   
+  
+
   whatsappShare(){
-    this.sharingVar.shareViaWhatsApp("Message via WhatsApp",'https://firebasestorage.googleapis.com/v0/b/food-madp.appspot.com/o/kaixina_nyp_s.jpg?alt=media&token=a249d9ec-fdd2-408c-8c11-cb49ef0a1da5')
+    console.log(this.picture);
+    this.authService.getDownloadUrl(this.picture).then(
+      (url) => {
+      console.log('Retrieved image ' + url);
+      
+      
+    this.sharingVar.shareViaWhatsApp("testing",url )
       .then(()=>{
         alert("Success");
       },
       ()=>{
          alert("failed")
       })
-  }
-
+  })
 }
+}
+
+

@@ -25,8 +25,7 @@ export class ExpenseDetailPage {
       
      let notes = navParams.get('notes');
 
-   
-    this.expense = new Expense (date,foodName, category,calorie, amount,dateOnly,notes);
+    this.expense = new Expense (date,foodName, category,amount,calorie,dateOnly,notes);
   }
   
 }
