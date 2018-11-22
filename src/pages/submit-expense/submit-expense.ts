@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Alert } from 'ionic-angular';
 import { Expense } from '../../models/expense';
 import { NgForm } from '../../../node_modules/@angular/forms';
 import { FoodFbProvider } from'../../providers/food-firebase';
@@ -12,6 +12,9 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { GoogleCloudVisionServiceProvider } from '../../providers/google-cloud-vision-service/google-cloud-vision-service';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { TranslateService } from '@ngx-translate/core';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
+import { Product } from '../../models/product';
+import { ProductFbProvider } from '../../providers/product-firebase';
 
 
 @Component({
@@ -21,6 +24,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class SubmitExpensePage {
   categories: string[];
   expense: Expense;
+  product: Product[];
   submitted = false;
   showList=false;
   foods: Food[];
@@ -28,9 +32,12 @@ export class SubmitExpensePage {
   items: AngularFireList<any[]>;
   displayItems =[];
   displayFoods=[];
+  options: BarcodeScannerOptions;
+  scannedData:any={};
  // selectedFood : Food;
   ngOnInit() {
    this.getAll();
+   //this.getfoodProducts();
     }
 
     getAll(){
@@ -40,19 +47,29 @@ export class SubmitExpensePage {
       //this.initIcon(); // Init icons after getting foods
       });
     }
+    getfoodProducts(){
+      this.productService.getProducts()
+      .subscribe(product => {
+      this.product = product;
+      //this.initIcon(); // Init icons after getting foods
+      });
+    }
 
   constructor(public navCtrl: NavController, 
     public ga: GoogleAnalytics,
     private foodService:FoodFbProvider,
+    private productService:ProductFbProvider,
     private camera: Camera,
     private vision: GoogleCloudVisionServiceProvider,
     private db: AngularFireDatabase,
     private alert: AlertController,//to be continued 
     private expenseService:ExpenseFbProvider,
-    public translate: TranslateService) 
+    public translate: TranslateService,
+    public scanner:BarcodeScanner) 
     {
       console.log("Enter food")
       this.items = db.list('foodimagescanner');
+      this.items = db.list('foodProducts');
     //var lang = this.translate.getDefaultLang();
     var lang= translate.getDefaultLang();
     if(lang == 'cn')
@@ -71,32 +88,13 @@ export class SubmitExpensePage {
       .catch(e => console.log('Error starting GoogleAnalytics', e));
 
 
-    this.expense = new Expense (new Date().toISOString(),this.categories[""],"", 0,"", '','');
+    this.expense = new Expense (new Date().toISOString(),this.categories[""],"", 0,0, '','');
+    //change 0 to ""
 
 
   }
 
-  saveResults(imageData, results) {
-    this.items.push([{ imageData: imageData, results: results}]) //this line is to save to database --> foodimagescanner
-    this.displayItems.push({imageData: imageData, results: results}) // is to display
-    //loop thorugh the results?
-    //console.log("before going into labels")
-    results[0].labelAnnotations.forEach(foodlabel => {
-      console.log("foodlabel object:"+ JSON.stringify(foodlabel))
-      this.foodService.getItemsByName(foodlabel.description)
-      .subscribe(foods => {
-        console.log("foodlabel object:"+ JSON.stringify(foods))
-        if(foods.length>0){
-         this.displayFoods.push(foods[0]); 
-        }
-      
-      //this.initIcon(); // Init icons after getting foods
-      });
-    });
-   
-       return(_ => { })
-      // return(err => { this.showAlert(err) });
-  }
+  
 
   showAlert(message) {
     let alert = this.alert.create({
@@ -131,14 +129,82 @@ export class SubmitExpensePage {
   }
 
 
+  saveResults(imageData, results) {
+    this.items.push([{ imageData: imageData, results: results}]) //this line is to save to database --> foodimagescanner
+    this.displayItems.push({imageData: imageData, results: results}) // is to display
+    //loop thorugh the results?
+    //console.log("before going into labels")
+    results[0].labelAnnotations.forEach(foodlabel => {
+      console.log("foodlabel object:"+ JSON.stringify(foodlabel))
+      this.foodService.getItemsByName(foodlabel.description)
+      .subscribe(foods => {
+        console.log("foodlabel object:"+ JSON.stringify(foods))
+        if(foods.length>0){
+         this.displayFoods.push(foods[0]); 
+        }
+      
+      //this.initIcon(); // Init icons after getting foods
+      });
+    });
+   
+       return(_ => { })
+      // return(err => { this.showAlert(err) });
+  }
+
+  scan(){
+    this.options= {
+        prompt: 'Scan your barcode'
+    }
+    this.scanner.scan(this.options).then((data) => {
+      this.scannedData = data;
+      console.log("scannedData: "+ this.scannedData)
+      this.productService.getProductsByUpc(this.scannedData.text).subscribe(product => {
+        
+        console.log("foodlabel object:"+ JSON.stringify(product))
+        var p = product[0];
+        if(p == null){
+          alert("No such product found!");
+          console.log("not found bar code");
+        }
+        else{
+          alert("A product is found!");
+          console.log("found bar code");
+          var p1 = <Product> p;
+          this.expense.foodName = p1.name;
+          this.expense.calorie = p1.calorie;
+        }
+        
+      });
+    }, (err) => {
+    console.log('Error : ', err);   
+    })
+}
+
+/*saveData(){
+  this.displayItems.push({scannedData: this.scannedData})
+  this.productService.getProducts()
+  .subscribe(products => {
+    console.log("foodlabel object:"+ JSON.stringify(this.product))
+  });
+}*/
+
+getProduct(product: Product) {
+  this.expense.calorie = product.calorie;
+  this.expense.foodName = product.name;
+
+}
 
 
-get testing() { return JSON.stringify(this.expense); }
+
+get testing() 
+{ 
+  return JSON.stringify(this.expense); 
+}
 
 getFood(food: Food) {
   console.log("Food chosen:")
   console.log(food)
-  this.expense.calorie = food.calorie.toString();
+  this.expense.calorie = food.calorie;
   this.expense.foodName = food.name;
   //this.expense.nutrition = food
 }

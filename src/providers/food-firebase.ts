@@ -8,23 +8,34 @@ import { TranslateService } from '@ngx-translate/core';
 export class FoodFbProvider {
     foodList: Food[]; // Stores the expense list for search functionality
     dataBaseName: string;
-    constructor(private db: AngularFireDatabase,translate: TranslateService,) {
-        if(translate.getDefaultLang()=='en'){
+    constructor(private db: AngularFireDatabase, private translate: TranslateService,) {
+        var lang = this.translate.getDefaultLang();
+        if(lang =='en'){
             //switch to english DB
             this.dataBaseName = '/foodItemsEnglish/';
         }
-        else if (translate.getDefaultLang()=='cn')
+        else if (lang =='cn')
         {
             //switch to chinese DB
-            this.dataBaseName = "/foodItems/";
+            this.dataBaseName = "/foodItems/"; 
         }
     }
 
 
     getItems(): Observable<any[]> {
+       var lang = this.translate.getDefaultLang();
+        if(lang =='en'){
+            //switch to english DB
+            this.dataBaseName = '/foodItemsEnglish/';
+        }
+        else if (lang =='cn')
+        {
+            //switch to chinese DB
+            this.dataBaseName = "/foodItems/"; 
+        }
     let foodObservable: Observable<any[]>;
     foodObservable =
-this.db.list('/foodItems/').snapshotChanges().pipe(
+this.db.list(this.dataBaseName).snapshotChanges().pipe(
 map(changes =>
 changes.map(c => ({ key: c.payload.key, ...c.payload.val()
 }))));
@@ -33,7 +44,18 @@ this.foodList = result;
 });
 return foodObservable;
 }
+
 getItemsByStatus(status: string): Observable<any[]> {
+    var lang = this.translate.getDefaultLang();
+    if(lang =='en'){
+        //switch to english DB
+        this.dataBaseName = '/foodItemsEnglish/';
+    }
+    else if (lang =='cn')
+    {
+        //switch to chinese DB
+        this.dataBaseName = "/foodItems/"; 
+    }
     let foodObservable: Observable<any[]>;
     foodObservable = this.db.list(this.dataBaseName, ref =>
 ref.orderByChild('type').equalTo(status)).snapshotChanges().pipe(
@@ -47,9 +69,20 @@ foodObservable.subscribe(result => {
 }
 
 // 
+
 getItemsByName(label: string): Observable<any[]> {
+    var lang = this.translate.getDefaultLang();
+    if(lang =='en'){
+        //switch to english DB
+        this.dataBaseName = '/foodItemsEnglish/';
+    }
+    else if (lang =='cn')
+    {
+        //switch to chinese DB
+        this.dataBaseName = "/foodItems/"; 
+    }
     let foodObservable: Observable<any[]>;
-    foodObservable = this.db.list('/foodItemsEnglish/', ref =>
+    foodObservable = this.db.list(this.dataBaseName, ref =>
 ref.orderByChild('sortName').equalTo(label)).snapshotChanges().pipe(
 map(changes =>
 changes.map(c => ({ key: c.payload.key, ...c.payload.val()
@@ -61,7 +94,18 @@ foodObservable.subscribe(result => {
 }
 
 // Search Function
+
 searchItems(val: string): Food[] {
+    var lang = this.translate.getDefaultLang();
+    if(lang =='en'){
+        //switch to english DB
+        this.dataBaseName = '/foodItemsEnglish/';
+    }
+    else if (lang =='cn')
+    {
+        //switch to chinese DB
+        this.dataBaseName = "/foodItems/"; 
+    }
     if (!val || !val.trim()) {
     // if no search term, return all foods.
     return this.foodList;

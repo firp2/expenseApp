@@ -35,6 +35,7 @@ import { DailyChartsPage } from '../pages/daily-charts/daily-charts';
 
 
 
+
 @Component({
   templateUrl: 'app.html',
  

@@ -24,7 +24,6 @@ import { ValidationPage } from '../pages/validation/validation';
 import { InstructionsPage } from '../pages/instructions/instructions';
 import { SubmitExpensePage } from '../pages/submit-expense/submit-expense';
 import { SharePage } from '../pages/share/share';
-import {BarcodeScannerPage} from '../pages/barcode-scanner/barcode-scanner';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -54,7 +53,7 @@ import { Camera } from '@ionic-native/camera';
 import { getPhotoPipe } from '../pipes/getPhoto';
 import { UserFbProvider } from '../providers/user-firebase';
 import { getNamePipe } from '../pipes/getName';
-import { HttpModule } from '@angular/http';
+import { Http ,HttpModule } from '@angular/http';
 import { environment } from '../environment';
 import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service/google-cloud-vision-service';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
@@ -70,6 +69,12 @@ import { GroupByPipe } from './app.component';
 import { UserFb } from '../models/userFB';
 import { DailyChartsPage } from '../pages/daily-charts/daily-charts';
 import { AuthProvider } from '../providers/auth';
+import { ProductFbProvider } from '../providers/product-firebase';
+import { ChartService } from '../providers/chart-service';
+import { EatWherePage } from '../pages/eat-where/eat-where';
+import { GoogleMaps } from '@ionic-native/google-maps';
+
+
 
 
 
@@ -119,10 +124,10 @@ export function setTranslateLoader(http: HttpClient) {
     SharePage,
     getPhotoPipe,
     getNamePipe,
-    BarcodeScannerPage,
     HealthDashboardPage,
     DailyChartsPage,
     GroupByPipe,
+    EatWherePage
     
   ],
   imports: [
@@ -181,9 +186,9 @@ export function setTranslateLoader(http: HttpClient) {
     ExpenseDetailPage,
     EditProfilePage,
     SharePage,
-    BarcodeScannerPage,
     HealthDashboardPage,
-    DailyChartsPage
+    DailyChartsPage,
+    EatWherePage
   ],
   providers: [
     StatusBar,
@@ -195,7 +200,9 @@ export function setTranslateLoader(http: HttpClient) {
     Camera,
     ExpenseFbProvider,
     UserFbProvider,
+    ProductFbProvider,
     BarcodeScanner,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   GoogleAnalytics,
   SocialSharing,
@@ -205,7 +212,8 @@ export function setTranslateLoader(http: HttpClient) {
     GoogleCloudVisionServiceProvider,
     //NativeStorage
     OrderPipe,
-    AuthProvider
+    AuthProvider,
+    ChartService
   ]
 })
 export class AppModule {}
